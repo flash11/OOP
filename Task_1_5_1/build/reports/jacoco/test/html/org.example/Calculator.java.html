@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Calculator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Task_1_5_1</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">Calculator.java</span></div><h1>Calculator.java</h1><pre class="source lang-java linenums">package org.example;
+
+import exceptions.*;
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Stack;
+
+<span class="nc" id="L10">public class Calculator {</span>
+<span class="fc" id="L11">    public static String[] operations = new String[] {&quot;+&quot;, &quot;-&quot;, &quot;*&quot;, &quot;/&quot;, &quot;log&quot;, &quot;pow&quot;, &quot;sqrt&quot;, &quot;sin&quot;, &quot;cos&quot;};</span>
+
+    public static void calculator() {
+/**
+ * multi-catch
+ */
+        while(true) {
+
+<span class="nc" id="L19">            Scanner line = new Scanner(System.in);</span>
+<span class="nc" id="L20">            String expression = line.nextLine();</span>
+
+            try {
+<span class="nc" id="L23">                Double result = calculateExpression(expression);</span>
+
+<span class="nc" id="L25">                System.out.println(result);</span>
+
+<span class="nc" id="L27">            } catch (DivisionByZeroException | SquareRootLessThanZeroException | IllegalArgumentFoundException |</span>
+                     LogarithmIncorrectArgumentException | IllegalOperatorException e) {
+
+<span class="nc" id="L30">                System.out.println(e.getMessage());</span>
+
+<span class="nc" id="L32">            }</span>
+
+<span class="nc" id="L34">        }</span>
+    }
+
+    public static Double calculateExpression(String expression) throws DivisionByZeroException, IllegalArgumentFoundException,
+            LogarithmIncorrectArgumentException, SquareRootLessThanZeroException, IllegalOperatorException {
+
+<span class="fc" id="L40">        String[] expressionArr = expression.split(&quot; &quot;);</span>
+<span class="fc" id="L41">        Stack&lt;Double&gt; stack = new Stack&lt;&gt;();</span>
+        Double a1;
+        Double a2;
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        for (int i = expressionArr.length - 1; i &gt;= 0; i--) {</span>
+            try {
+<span class="fc" id="L46">                Double tmp = Double.parseDouble(expressionArr[i]);</span>
+<span class="fc" id="L47">                stack.push(tmp);</span>
+            }
+<span class="fc" id="L49">            catch (NumberFormatException e) {</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">                if (Arrays.asList(operations).contains(expressionArr[i])){</span>
+<span class="pc bpc" id="L51" title="1 of 10 branches missed.">                    switch (expressionArr[i]) {</span>
+                        case(&quot;+&quot;):
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">                            if (stack.size() &lt; 2) {</span>
+<span class="nc" id="L54">                                throw new IllegalArgumentFoundException(&quot;РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ&quot;);</span>
+                            }
+<span class="fc" id="L56">                            a1 = stack.pop();</span>
+<span class="fc" id="L57">                            a2 = stack.pop();</span>
+<span class="fc" id="L58">                            stack.push(a1 + a2);</span>
+<span class="fc" id="L59">                            break;</span>
+                        case(&quot;-&quot;):
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">                            if (stack.size() &lt; 2) {</span>
+<span class="nc" id="L62">                                throw new IllegalArgumentFoundException(&quot;РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ&quot;);</span>
+                            }
+<span class="fc" id="L64">                            a1 = stack.pop();</span>
+<span class="fc" id="L65">                            a2 = stack.pop();</span>
+<span class="fc" id="L66">                            stack.push(a1 - a2);</span>
+<span class="fc" id="L67">                            break;</span>
+                        case(&quot;*&quot;):
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">                            if (stack.size() &lt; 2) {</span>
+<span class="nc" id="L70">                                throw new IllegalArgumentFoundException(&quot;РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ&quot;);</span>
+                            }
+<span class="fc" id="L72">                            a1 = stack.pop();</span>
+<span class="fc" id="L73">                            a2 = stack.pop();</span>
+<span class="fc" id="L74">                            stack.push(a1 * a2);</span>
+<span class="fc" id="L75">                            break;</span>
+                        case(&quot;/&quot;):
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">                            if (stack.size() &lt; 2) {</span>
+<span class="nc" id="L78">                                throw new IllegalArgumentFoundException(&quot;РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ&quot;);</span>
+                            }
+<span class="fc" id="L80">                            a1 = stack.pop();</span>
+<span class="fc" id="L81">                            a2 = stack.pop();</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">                            if (a2.equals(0.0)) {</span>
+<span class="nc" id="L83">                                throw new DivisionByZeroException(&quot;РќРµР»СЊР·СЏ РґРµР»РёС‚СЊ РЅР° РЅРѕР»СЊ&quot;);</span>
+                            }
+<span class="fc" id="L85">                            stack.push(a1 / a2);</span>
+<span class="fc" id="L86">                            break;</span>
+                        case(&quot;log&quot;):
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">                            if (stack.size() &lt; 1) {</span>
+<span class="nc" id="L89">                                throw new IllegalArgumentFoundException(&quot;РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ&quot;);</span>
+                            }
+<span class="fc" id="L91">                            a1 = stack.pop();</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">                            if (a1 &lt;= 0) {</span>
+<span class="nc" id="L93">                                throw new LogarithmIncorrectArgumentException(&quot;РђСЂРіСѓРјРµРЅС‚ Р»РѕРіР°СЂРёС„РјР° РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0&quot;);</span>
+                            }
+<span class="fc" id="L95">                            stack.push(Math.log10(a1));</span>
+<span class="fc" id="L96">                            break;</span>
+                        case(&quot;pow&quot;):
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">                            if (stack.size() &lt; 2) {</span>
+<span class="nc" id="L99">                                throw new IllegalArgumentFoundException(&quot;РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ&quot;);</span>
+                            }
+<span class="fc" id="L101">                            a1 = stack.pop();</span>
+<span class="fc" id="L102">                            a2 = stack.pop();</span>
+<span class="fc" id="L103">                            stack.push(Math.pow(a1, a2));</span>
+<span class="fc" id="L104">                            break;</span>
+                        case(&quot;sqrt&quot;):
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">                            if (stack.size() &lt; 1) {</span>
+<span class="nc" id="L107">                                throw new IllegalArgumentFoundException(&quot;РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ&quot;);</span>
+                            }
+<span class="fc" id="L109">                            a1 = stack.pop();</span>
+<span class="pc bpc" id="L110" title="1 of 2 branches missed.">                            if (a1 &lt; 0) {</span>
+<span class="nc" id="L111">                                throw new SquareRootLessThanZeroException(&quot;РљРѕСЂРµРЅСЊ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ 0&quot;);</span>
+                            }
+<span class="fc" id="L113">                            stack.push(Math.sqrt(a1));</span>
+<span class="fc" id="L114">                            break;</span>
+                        case(&quot;sin&quot;):
+<span class="pc bpc" id="L116" title="1 of 2 branches missed.">                            if (stack.size() &lt; 1) {</span>
+<span class="nc" id="L117">                                throw new IllegalArgumentFoundException(&quot;РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ&quot;);</span>
+                            }
+<span class="fc" id="L119">                            a1 = stack.pop();</span>
+<span class="fc" id="L120">                            stack.push(Math.sin(a1));</span>
+<span class="fc" id="L121">                            break;</span>
+                        case(&quot;cos&quot;):
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">                            if (stack.size() &lt; 1) {</span>
+<span class="nc" id="L124">                                throw new IllegalArgumentFoundException(&quot;РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ&quot;);</span>
+                            }
+<span class="fc" id="L126">                            a1 = stack.pop();</span>
+<span class="fc" id="L127">                            stack.push(Math.cos(a1));</span>
+                            break;
+<span class="fc" id="L129">                    }</span>
+                }
+                else {
+<span class="pc bpc" id="L132" title="1 of 2 branches missed.">                    if (expressionArr[i].equals(&quot;&quot;)) {</span>
+<span class="fc" id="L133">                        continue;</span>
+                    }
+<span class="nc" id="L135">                    throw new IllegalOperatorException(&quot;РќРµРёР·РІРµСЃС‚РЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ &quot; + expressionArr[i]);</span>
+                }
+<span class="fc" id="L137">            }</span>
+        }
+<span class="pc bpc" id="L139" title="1 of 2 branches missed.">        if (stack.size() == 1) {</span>
+<span class="fc" id="L140">            return stack.pop();</span>
+        }
+        else {
+<span class="nc" id="L143">            throw new IllegalArgumentFoundException(&quot;РќРµРІРµСЂРЅС‹Р№ РѕС‚РІРµС‚&quot;);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

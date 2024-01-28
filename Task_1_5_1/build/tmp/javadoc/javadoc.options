@@ -1,0 +1,13 @@
+-classpath 'C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\build\\classes\\java\\main;C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\build\\resources\\main'
+-d 'C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\build\\docs\\javadoc'
+-doctitle 'Task_1_5_1 API'
+-notimestamp 
+-quiet 
+-windowtitle 'Task_1_5_1 API'
+'C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\src\\main\\java\\exceptions\\DivisionByZeroException.java'
+'C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\src\\main\\java\\exceptions\\IllegalArgumentFoundException.java'
+'C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\src\\main\\java\\exceptions\\IllegalOperatorException.java'
+'C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\src\\main\\java\\exceptions\\LogarithmIncorrectArgumentException.java'
+'C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\src\\main\\java\\exceptions\\SquareRootLessThanZeroException.java'
+'C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\src\\main\\java\\org\\example\\Calculator.java'
+'C:\\Users\\1\\Desktop\\OOP\\Task_1_5_1\\src\\main\\java\\org\\example\\Main.java'

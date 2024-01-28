@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.CalculatorTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2024-01-28T16:13:38" hostname="DESKTOP-B4PNIJ0" time="0.174">
+  <properties/>
+  <testcase name="testAdd()" classname="org.example.CalculatorTest" time="0.081"/>
+  <testcase name="testCos()" classname="org.example.CalculatorTest" time="0.021"/>
+  <testcase name="testDiv()" classname="org.example.CalculatorTest" time="0.002"/>
+  <testcase name="testLog()" classname="org.example.CalculatorTest" time="0.003"/>
+  <testcase name="testMul()" classname="org.example.CalculatorTest" time="0.006"/>
+  <testcase name="testPow()" classname="org.example.CalculatorTest" time="0.016"/>
+  <testcase name="testSin()" classname="org.example.CalculatorTest" time="0.004"/>
+  <testcase name="testMinus()" classname="org.example.CalculatorTest" time="0.002"/>
+  <testcase name="testSqrt()" classname="org.example.CalculatorTest" time="0.002"/>
+  <testcase name="testWhiteSpace()" classname="org.example.CalculatorTest" time="0.004"/>
+  <testcase name="testFunctions()" classname="org.example.CalculatorTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
