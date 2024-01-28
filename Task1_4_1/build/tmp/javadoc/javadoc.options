@@ -1,0 +1,9 @@
+-classpath 'C:\\Users\\1\\Desktop\\OOP\\Task1_4_1\\build\\classes\\java\\main;C:\\Users\\1\\Desktop\\OOP\\Task1_4_1\\build\\resources\\main'
+-d 'C:\\Users\\1\\Desktop\\OOP\\Task1_4_1\\build\\docs\\javadoc'
+-doctitle 'Task1_4_1 API'
+-notimestamp 
+-quiet 
+-windowtitle 'Task1_4_1 API'
+'C:\\Users\\1\\Desktop\\OOP\\Task1_4_1\\src\\main\\java\\org\\example\\Semester.java'
+'C:\\Users\\1\\Desktop\\OOP\\Task1_4_1\\src\\main\\java\\org\\example\\StudentBook.java'
+'C:\\Users\\1\\Desktop\\OOP\\Task1_4_1\\src\\main\\java\\org\\example\\Subject.java'
