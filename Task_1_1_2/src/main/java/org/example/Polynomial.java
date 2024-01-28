@@ -143,7 +143,7 @@ public class Polynomial {
             return Double.toString(coef);
         }
         String coefPart = Double.toString(coef);
-        String powerDegreePart = "^%s".formatted(powerDegree);
+        String powerDegreePart = String.format("^%s", powerDegree);
         if (coef == 1.) {
             coefPart = "";
         }
@@ -151,7 +151,7 @@ public class Polynomial {
         if (powerDegree == 1) {
             powerDegreePart = "";
         }
-        return "%sx%s".formatted(coefPart, powerDegreePart);
+        return String.format("%sx%s", coefPart, powerDegreePart);
     }
 
     public static Polynomial of(double... args) {
