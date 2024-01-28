@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * [1,2,3] -> 3x^3 + 2x^2 + 1
+ * [1,2,3] translate 3x^3 + 2x^2 + 1
  */
 public class Polynomial {
     private double[] coefficients;
