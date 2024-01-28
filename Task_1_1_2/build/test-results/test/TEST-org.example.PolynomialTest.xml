@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.PolynomialTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-01-28T21:37:50" hostname="DESKTOP-B4PNIJ0" time="0.147">
+  <properties/>
+  <testcase name="minusPlusTest()" classname="org.example.PolynomialTest" time="0.119"/>
+  <testcase name="differentiateTest()" classname="org.example.PolynomialTest" time="0.006"/>
+  <testcase name="testTimes()" classname="org.example.PolynomialTest" time="0.002"/>
+  <testcase name="representationTest()" classname="org.example.PolynomialTest" time="0.004"/>
+  <testcase name="evaluating()" classname="org.example.PolynomialTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

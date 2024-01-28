@@ -116,8 +116,8 @@ public class Polynomial {
         if (obj == null) {
             return false;
         }
-        if (obj instanceof Polynomial polynomial) {
-            return Arrays.equals(this.coefficients, polynomial.coefficients);
+        if (obj instanceof Polynomial) {
+            return Arrays.equals(this.coefficients, ((Polynomial) obj).coefficients);
         }
         return false;
     }

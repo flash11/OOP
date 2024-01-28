@@ -9,7 +9,7 @@ public class PolynomialTest {
 
     @Test
     public void representationTest() {
-//        Polynomial polynomial = Polynomial.of(2.0, 1.0);
+
         Polynomial polynomial = new Polynomial(new double[]{2., 1.});
         Assertions.assertEquals("x + 2.0", polynomial.toString());
     }
