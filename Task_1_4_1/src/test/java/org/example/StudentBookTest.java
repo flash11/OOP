@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /**
- * Testing my methods
+ * Testing my methods.
  */
 public class StudentBookTest {
 
@@ -28,6 +28,7 @@ public class StudentBookTest {
         assertEquals(4.4, studentBook1.averageMark());
     }
 
+    
     @Test
     public void noThreeTest() {
 
@@ -42,7 +43,6 @@ public class StudentBookTest {
         assertFalse(semester1.noThree());
 
     }
-
 
 
     @Test
@@ -65,12 +65,11 @@ public class StudentBookTest {
         studentBook1.setFinalTask(5);
 
         assertTrue(studentBook1.isRedDiploma());
-
-
-
     }
+
+    
     @Test
-    public void moneyBonusTest(){
+    public void moneyBonusTest() {
 
         Semester semester1 = new Semester();
         semester1.add("Math", 5);
