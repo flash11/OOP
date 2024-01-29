@@ -1,7 +1,8 @@
 package org.example;
 
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.OptionalDouble;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +17,7 @@ public class StudentBook {
     private int finalTask;
 
     /**
-     * create setter and getter
+     * create setter and getter.
      * @return list of semesters
      */
     public ArrayList<Semester> getSemesters() {
@@ -36,15 +37,19 @@ public class StudentBook {
     }
 
     /**
-     * initialized mark of final task
+     * initialized mark of final task.
      * @param mark
      */
-    public void setFinalTask(int mark) { this.finalTask = mark; }
+    public void setFinalTask(int mark) { 
+        this.finalTask = mark; 
+    }
 
-    public int getFinalTask() { return finalTask; }
+    public int getFinalTask() { 
+        return finalTask; 
+    }
 
     /**
-     * constructor of class. write who own this book
+     * constructor of class. write who own this book.
      * @param name
      */
     public StudentBook(String name) {
@@ -54,15 +59,15 @@ public class StudentBook {
     }
 
     /**
-     * add semester to all semesters
+     * add semester to all semesters.
      * @param sem
      */
-    public void addSemester (Semester sem){
+    public void addSemester (Semester sem) {
         semesters.add(sem);
     }
 
     /**
-     * method which calculate average mark
+     * method which calculate average mark.
      * @return average mark
      */
     public double averageMark() {
@@ -85,7 +90,7 @@ public class StudentBook {
 
 
     /**
-     * read last mark of subject to set red diploma
+     * read last mark of subject to set red diploma.
      * @return true or false
      */
     public boolean isRedDiploma() {
@@ -96,7 +101,7 @@ public class StudentBook {
                 .flatMap(semester -> semester.getListSubjectsOfSemester().stream())
                 .distinct()
                 /**
-                 * combine all streams to one
+                 * combine all streams to one.
                  */
                 .mapToInt(Subject::getMark)
                 .filter(mark -> mark == 5)
