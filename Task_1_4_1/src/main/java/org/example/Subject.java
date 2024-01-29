@@ -1,8 +1,8 @@
 package org.example;
 
-    /**
-    * class to create subjects.
-    */
+/**
+* class to create subjects.
+*/
 public class Subject {
 
     private String nameSubject;
