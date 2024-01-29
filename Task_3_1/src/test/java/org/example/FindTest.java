@@ -36,7 +36,7 @@ public class FindTest {
         return Stream.of(
                 Arguments.of("a", "src/test/java/org/example/sample2.txt", new Integer[] {0, 4, 5, 6, 7}),
 
-                Arguments.of("b", "src/test/java/org/example/sample3.txt", new Integer[] {3, 4}),
+                Arguments.of("b", "src/test/java/org/example/sample3.txt", new Integer[] {3, 4})
         );
     }
 
