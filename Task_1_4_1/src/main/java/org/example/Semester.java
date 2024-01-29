@@ -3,7 +3,7 @@ package org.example;
 import java.util.ArrayList;
 
 /**
-* class to create semester
+* class to create semester.
 */
 
 public class Semester {
@@ -12,7 +12,7 @@ public class Semester {
 
     /**
      * getter.
-     * @return
+     * return subjects. 
      */
 
     public ArrayList<Subject> getListSubjectsOfSemester() {
@@ -29,8 +29,8 @@ public class Semester {
 
     /**
      * method which add subjects and marks.
-     * @param nameOfSubject
-     * @param mark
+     * param1 is nameOfSubject.
+     * param2 is mark.
      */
     public void add(String nameOfSubject, int mark) {
         var subj = new Subject(nameOfSubject, mark);
