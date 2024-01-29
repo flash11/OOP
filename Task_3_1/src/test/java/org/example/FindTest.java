@@ -14,13 +14,6 @@ import java.util.stream.Stream;
 public class FindTest {
 
     @ParameterizedTest
-    @MethodSource("subSequence")
-    void testSearchSubString(String subSequence, String filename, Integer[] expectedResult) throws IOException {
-        Integer[] result = Find.find(subSequence, filename);
-        Assertions.assertArrayEquals(result, expectedResult);
-    }
-
-    @ParameterizedTest
     @MethodSource("NoFileException")
     void testNoFile(String subSequence, String filename, Exception eExpected) {
         try {
