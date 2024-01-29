@@ -1,5 +1,8 @@
 package org.example;
 
+    /**
+    * class to create subjects.
+    */
 public class Subject {
 
     private String nameSubject;
@@ -10,7 +13,9 @@ public class Subject {
         return nameSubject;
     }
 
-    public int getMark() { return mark; }
+    public int getMark() { 
+        return mark; 
+    }
 
     public void setMark(int mark) {
         this.mark = this.mark;
