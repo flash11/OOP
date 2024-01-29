@@ -2,13 +2,17 @@ package org.example;
 
 import java.util.ArrayList;
 
+/**
+* class to create semester
+*/
+
 public class Semester {
 
     private ArrayList<Subject> listSubjectsOfSemester;
 
     /**
-     * getter
-     * @return listSubjectsOfSemester
+     * getter.
+     * @return
      */
 
     public ArrayList<Subject> getListSubjectsOfSemester() {
@@ -17,14 +21,14 @@ public class Semester {
 
 
     /**
-     * constructor
+     * constructor.
      */
     public Semester() {
         this.listSubjectsOfSemester = new ArrayList<Subject>();
     }
 
     /**
-     * method which add subjects and marks
+     * method which add subjects and marks.
      * @param nameOfSubject
      * @param mark
      */
