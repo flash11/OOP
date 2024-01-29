@@ -6,7 +6,7 @@ import java.util.OptionalDouble;
 import java.util.stream.Stream;
 
 /**
- * class which has all semesters with subjects and marks
+ * class which has all semesters with subjects and marks.
  */
 
 public class StudentBook {
@@ -18,7 +18,7 @@ public class StudentBook {
 
     /**
      * create setter and getter.
-     * @return list of semesters
+     * return list of semesters.
      */
     public ArrayList<Semester> getSemesters() {
         return semesters;
@@ -38,7 +38,7 @@ public class StudentBook {
 
     /**
      * initialized mark of final task.
-     * @param mark
+     * parameter mark.
      */
     public void setFinalTask(int mark) { 
         this.finalTask = mark; 
@@ -50,7 +50,7 @@ public class StudentBook {
 
     /**
      * constructor of class. write who own this book.
-     * @param name
+     * parameter name.
      */
     public StudentBook(String name) {
         this.name = name;
@@ -60,7 +60,7 @@ public class StudentBook {
 
     /**
      * add semester to all semesters.
-     * @param sem
+     * parameter sem.
      */
     public void addSemester (Semester sem) {
         semesters.add(sem);
@@ -68,7 +68,7 @@ public class StudentBook {
 
     /**
      * method which calculate average mark.
-     * @return average mark
+     * return average mark.
      */
     public double averageMark() {
 
@@ -91,7 +91,7 @@ public class StudentBook {
 
     /**
      * read last mark of subject to set red diploma.
-     * @return true or false
+     * return true or false.
      */
     public boolean isRedDiploma() {
 
