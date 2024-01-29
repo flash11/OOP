@@ -38,13 +38,11 @@ public class Semester {
     }
 
 
-    public boolean noThree(){
+    public boolean noThree() {
         return listSubjectsOfSemester.stream().allMatch(subject -> subject.getMark() > 3 );
     }
 
     public boolean moneyBonus() {
         return listSubjectsOfSemester.stream().allMatch(mark -> mark.getMark() == 5);
     }
-
-
 }
