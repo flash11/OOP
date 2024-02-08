@@ -98,6 +98,8 @@ public class CalculatorTest {
         Assertions.assertEquals(res, 1024);
     }
 
+    
+
     @Test
     public void testSqrt() throws ArithmeticException, IllegalArgumentFoundException,
             IllegalOperatorException {
@@ -111,5 +113,30 @@ public class CalculatorTest {
             IllegalOperatorException {
         Double res = Calculator.calculateExpression("    +   9       9");
         Assertions.assertEquals(res, 18.0);
+    }
+
+    //
+     @Test
+    public void testAddition() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+        Double result = Calculator.calculateExpression("+ 1 2");
+        Assertions.assertEquals(3.0, result, "1 + 2 should be 3");
+    }
+
+    @Test
+    public void testSubtraction() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+        Double result = Calculator.calculateExpression("- 5 2");
+        Assertions.assertEquals(3.0, result, "5 - 2 should be 3");
+    }
+
+    @Test
+    public void testMultiplication() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+        Double result = Calculator.calculateExpression("* 3 4");
+        Assertions.assertEquals(12.0, result, "3 * 4 should be 12");
+    }
+
+    @Test
+    public void testDivision() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+        Double result = Calculator.calculateExpression("/ 8 2");
+        Assertions.assertEquals(4.0, result, "8 / 2 should be 4");
     }
 }
