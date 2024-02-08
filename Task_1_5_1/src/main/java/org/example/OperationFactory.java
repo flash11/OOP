@@ -12,6 +12,7 @@ import operations.Negative;
 import operations.Pow;
 import operations.Plus;
 import operations.Sin;
+import operations.Sqrt;
 
 /**
  * factory.
