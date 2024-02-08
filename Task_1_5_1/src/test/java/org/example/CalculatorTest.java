@@ -23,6 +23,20 @@ public class CalculatorTest {
     }
 
     @Test
+    public void testNegative() throws IllegalArgumentFoundException, ArithmeticException {
+        // Подготавливаем стек с операциями, содержащий одно число
+        Stack<Operation> stack = new Stack<>();
+        stack.push(new Num(10)); // Положительное число
+        Negative negativeOperation = new Negative();
+        negativeOperation.setArgsFromStack(stack);
+        Assertions.assertEquals(-10, negativeOperation.count(), "Negative of 10 should be -10");
+
+        stack.push(new Num(-20)); // Отрицательное число
+        negativeOperation.setArgsFromStack(stack);
+        Assertions.assertEquals(20, negativeOperation.count(), "Negative of -20 should be 20");
+    }
+
+    @Test
     public void testArctg() throws ArithmeticException, IllegalArgumentFoundException,
             IllegalOperatorException {
         Double res = Calculator.calculateExpression("atan 1");
