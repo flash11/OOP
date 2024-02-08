@@ -3,7 +3,7 @@ package exceptions;
 /**
  * exception when incorrect operator.
  */
-public class IllegalOperatorException extends Throwable{
+public class IllegalOperatorException extends Throwable {
 
     /**
      * main func.
