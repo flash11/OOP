@@ -153,5 +153,19 @@ public class CalculatorTest {
         }, "Logarithm of a negative number should throw LogarithmIncorrectArgumentException");
     }
 
+    @Test
+    public void testSquareRootOfNegativeNumberThrowsException() {
+    Assertions.assertThrows(SquareRootLessThanZeroException.class, () -> {
+        Calculator.calculateExpression("sqrt -4");
+    }, "Square root of a negative number should throw SquareRootLessThanZeroException");
+}
+
+    @Test
+    public void testOperationWithInsufficientArgumentsThrowsException() {
+    Assertions.assertThrows(IllegalArgumentFoundException.class, () -> {
+        Calculator.calculateExpression("+ 5"); // Только один аргумент вместо двух
+    }, "Operation with insufficient arguments should throw IllegalArgumentFoundException");
+}
+
 
 }
