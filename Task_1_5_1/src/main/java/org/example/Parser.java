@@ -3,15 +3,18 @@ package org.example;
 import exceptions.IllegalArgumentFoundException;
 import exceptions.IllegalOperatorException;
 import operations.Num;
-import operations.Operation;
-
 import java.util.Stack;
+import operations.Operation;
 
 /**
  * parsing and structure stack.
  */
 public class Parser {
-    public static Operation parse(String expression) throws IllegalArgumentFoundException, IllegalOperatorException {
+    /**
+    * parse method.
+    */
+    public static Operation parse(String expression) 
+    throws IllegalArgumentFoundException, IllegalOperatorException {
 
         String[] expressionArr = expression.split(" ");
         Stack<Operation> stack = new Stack<>();
