@@ -120,4 +120,17 @@ public class CalculatorTest {
         Assertions.assertThrows(DivisionByZeroException.class, () -> { Calculator.calculateExpression("/ 1 0"); }, "Division by zero should throw DivisionByZeroException");
     }
 
+     @Test
+    public void testCombinedOperations() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+        Double result = Calculator.calculateExpression("+ * 2 3 4");
+        Assertions.assertEquals(10.0, result, "2 * 3 + 4 should be 10");
+    }
+
+    @Test
+    public void testUnknownOperation() {
+        Assertions.assertThrows(IllegalOperatorException.class, () -> {
+            Calculator.calculateExpression("unknown 2 3");
+        }, "Unknown operation should throw IllegalOperatorException");
+    }
+
 }
