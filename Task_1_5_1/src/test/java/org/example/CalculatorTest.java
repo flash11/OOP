@@ -23,6 +23,13 @@ public class CalculatorTest {
     }
 
     @Test
+    public void testArctg() throws ArithmeticException, IllegalArgumentFoundException,
+            IllegalOperatorException {
+        Double res = Calculator.calculateExpression("atan 1");
+        Assertions.assertEquals(Math.round(res * 10000), Math.round(Math.PI / 4 * 10000));
+    }
+    
+    @Test
     public void testMinus() throws ArithmeticException, IllegalArgumentFoundException,
             IllegalOperatorException {
         Double res  = Calculator.calculateExpression("- 11 -45");
