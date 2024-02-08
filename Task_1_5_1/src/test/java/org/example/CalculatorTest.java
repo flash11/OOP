@@ -115,4 +115,9 @@ public class CalculatorTest {
         Assertions.assertEquals(res, 18.0);
     }
 
+    @Test
+    public void testDivisionByZero() {
+        Assertions.assertThrows(DivisionByZeroException.class, () -> { Calculator.calculateExpression("/ 1 0"); }, "Division by zero should throw DivisionByZeroException");
+    }
+
 }
