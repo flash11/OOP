@@ -1,13 +1,25 @@
 package org.example;
 
 import exceptions.IllegalOperatorException;
-import operations.*;
+import operations.Cos;
+import operations.Sin;
+import operations.Log;
+import operations.Pow;
+import operations.Arctg;
+import operations.Minus;
+import operations.Multiplication;
+import operations.Division;
+import operations.Plus;
+import operations.Negative;
 
 /**
  * factory.
  */
 public class OperationFactory {
-    public static Operation create(String operation) throws IllegalOperatorException{
+    /**
+    * create method.
+    */
+    public static Operation create(String operation) throws IllegalOperatorException {
         switch (operation) {
             case "cos": return new Cos();
             case "sin": return new Sin();
