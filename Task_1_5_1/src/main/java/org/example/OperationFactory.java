@@ -9,7 +9,7 @@ import operations.Log;
 import operations.Minus;
 import operations.Multiplication;
 import operations.Negative;
-import operation.Operation;
+import operations.Operation;
 import operations.Pow;
 import operations.Plus;
 import operations.Sin;
