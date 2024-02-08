@@ -145,5 +145,13 @@ public class CalculatorTest {
         Assertions.assertEquals(0.00000002, result, "0.0001 * 0.0002 should be 0.00000002");
 }
 
+        
+    @Test
+    public void testLogarithmOfNegativeNumberThrowsException() {
+        Assertions.assertThrows(LogarithmIncorrectArgumentException.class, () -> {
+            Calculator.calculateExpression("log -1");
+        }, "Logarithm of a negative number should throw LogarithmIncorrectArgumentException");
+    }
+
 
 }
