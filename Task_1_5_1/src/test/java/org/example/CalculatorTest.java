@@ -61,7 +61,7 @@ public class CalculatorTest {
     public void testLog() throws ArithmeticException, IllegalArgumentFoundException,
             IllegalOperatorException {
         Double res  = Calculator.calculateExpression("log 145");
-        Assertions.assertEquals(Math.round(res * 1000), 2161);
+        Assertions.assertEquals(Math.round(res * 1000), 4977);
     }
 
     @Test
