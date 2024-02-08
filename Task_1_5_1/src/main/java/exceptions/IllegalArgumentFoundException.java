@@ -3,7 +3,7 @@ package exceptions;
 /**
  * exception when incorrect operator.
  */
-public class IllegalArgumentFoundException extends Throwable{
+public class IllegalArgumentFoundException extends Throwable {
 
     /**
      * main func.
