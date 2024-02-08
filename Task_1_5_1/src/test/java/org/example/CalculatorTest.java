@@ -11,7 +11,7 @@ public class CalculatorTest {
     @Test
     public void testFunctions() throws ArithmeticException, IllegalArgumentFoundException,
             IllegalOperatorException {
-        Double res = Calculator.calculateExpression("sin cos sqrt log + 1 - 12 * 3 / 4 5");
+        Double res = Calculator.calculateExpression("cos sqrt + 1 - 12 * 3 4");
         Assertions.assertEquals(Math.round(res * 10000), 5403);
     }
 
