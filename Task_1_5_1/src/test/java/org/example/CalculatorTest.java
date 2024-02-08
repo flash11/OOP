@@ -6,6 +6,10 @@ import exceptions.ArithmeticException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import operations.Negative;
+import operations.Num;
+import operations.Operation;
+
 public class CalculatorTest {
 
     @Test
