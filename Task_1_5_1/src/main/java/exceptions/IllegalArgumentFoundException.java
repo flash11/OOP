@@ -1,15 +1,15 @@
 package exceptions;
 
 /**
- * exception when incorrect number of argument
+ * exception when incorrect operator.
  */
-public class IllegalArgumentFoundException extends Throwable {
+public class IllegalArgumentFoundException extends Throwable{
 
     /**
-     * main func
-     * @param message - for user
+     * main func.
+     *
+     * @param message for user.
      */
-
     public IllegalArgumentFoundException(String message) {
         super(message);
     }

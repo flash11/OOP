@@ -1,15 +1,15 @@
 package exceptions;
 
 /**
- * exception when incorrect number of logarithm
+ * exception when incorrect number of logarithm.
  */
+public class LogarithmIncorrectArgumentException extends ArithmeticException {
 
-public class LogarithmIncorrectArgumentException extends Throwable {
     /**
-     * main func
-     * @param message - for user
+     * main func.
+     *
+     * @param message for user.
      */
-
     public LogarithmIncorrectArgumentException(String message) {
         super(message);
     }

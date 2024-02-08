@@ -1,16 +1,16 @@
 package exceptions;
 
 /**
- * exception when division by zero occurs
+ * exception when division by zero occurs.
  */
-public class DivisionByZeroException extends Throwable {
+public class DivisionByZeroException extends ArithmeticException {
 
     /**
-     * main func
-     * @param message - for user
+     * main func.
+     *
+     * @param message for user.
      */
     public DivisionByZeroException(String message) {
-
         super(message);
     }
 }
