@@ -3,7 +3,7 @@ package exceptions;
 /**
  * exception when incorrect square root.
  */
-public class SquareRootLessThanZeroException extends ArithmeticException{
+public class SquareRootLessThanZeroException extends ArithmeticException {
 
     /**
      * main func.
