@@ -133,4 +133,17 @@ public class CalculatorTest {
         }, "Unknown operation should throw IllegalOperatorException");
     }
 
+    @Test
+    public void testLargeNumbers() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+        Double result = Calculator.calculateExpression("+ 99999999 1");
+        Assertions.assertEquals(100000000.0, result, "99999999 + 1 should be 100000000");
+}
+
+    @Test
+    public void testSmallNumbers() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+        Double result = Calculator.calculateExpression("* 0.0001 0.0002");
+        Assertions.assertEquals(0.00000002, result, "0.0001 * 0.0002 should be 0.00000002");
+}
+
+
 }
