@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -132,7 +132,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Semester</span>
 extends java.lang.Object</pre>
-<div class="block">class to create semester.</div>
 </li>
 </ul>
 </div>
@@ -185,18 +184,23 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addFutureSubject(java.lang.String)">addFutureSubject</a></span>&#8203;(java.lang.String&nbsp;nameOfSubject)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Subject.html" title="class in org.example">Subject</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getListSubjectsOfSemester()">getListSubjectsOfSemester</a></span>()</code></th>
 <td class="colLast">
 <div class="block">getter.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#moneyBonus()">moneyBonus</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#noThree()">noThree</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -252,8 +256,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getListSubjectsOfSemester</h4>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="Subject.html" title="class in org.example">Subject</a>&gt;&nbsp;getListSubjectsOfSemester()</pre>
-<div class="block">getter.
- return subjects.</div>
+<div class="block">getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>listSubjectsOfSemester.</dd>
+</dl>
 </li>
 </ul>
 <a id="add(java.lang.String,int)">
@@ -264,9 +271,21 @@ extends java.lang.Object</pre>
 <h4>add</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;add&#8203;(java.lang.String&nbsp;nameOfSubject,
                 int&nbsp;mark)</pre>
-<div class="block">method which add subjects and marks.
- param1 is nameOfSubject.
- param2 is mark.</div>
+<div class="block">method which add subjects and marks.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>nameOfSubject</code> - </dd>
+<dd><code>mark</code> - </dd>
+</dl>
+</li>
+</ul>
+<a id="addFutureSubject(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addFutureSubject</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addFutureSubject&#8203;(java.lang.String&nbsp;nameOfSubject)</pre>
 </li>
 </ul>
 <a id="noThree()">
