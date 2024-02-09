@@ -1,5 +1,8 @@
 package org.example;
 
+/**
+ * Subject class.
+ */
 public class Subject {
 
     private String nameSubject;
