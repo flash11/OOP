@@ -1,8 +1,8 @@
 package operations;
 
+import exceptions.ArithmeticException;
 import exceptions.IllegalArgumentFoundException;
 import exceptions.SquareRootLessThanZeroException;
-import exceptions.ArithmeticException;
 import java.util.Stack;
 
 /**
