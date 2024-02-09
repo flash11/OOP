@@ -19,8 +19,12 @@ import operations.Sqrt;
  */
 public class OperationFactory {
     /**
-    * create method.
-    */
+     * factory.
+     *
+     * @param operation all.
+     * @return operation.
+     * @throws IllegalOperatorException exception.
+     */
     public static Operation create(String operation) throws IllegalOperatorException {
         switch (operation) {
             case "cos": return new Cos();
