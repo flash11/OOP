@@ -6,9 +6,10 @@ package org.example;
 public class Main {
     /**
      * main method.
+     *
      * @param args expression
      */
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Calculator.calculator();
     }
 }
