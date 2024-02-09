@@ -75,7 +75,7 @@ public class StudentBook {
 
         Stream<Subject> listOfSubjects = Stream.empty();
 
-        for (var semester : semesters ) {
+        for (var semester : semesters) {
             listOfSubjects = Stream.concat(listOfSubjects, 
                 semester.getListSubjectsOfSemester().stream());
         }
@@ -119,6 +119,11 @@ public class StudentBook {
         }
     }
 
+    /**
+     * calculate how many 4 possible.
+     *
+     * @return number of 4.
+     */
     public int max4Allowed() {
         ArrayList<Semester> tmpSemesters = new ArrayList<>(semesters);
 
