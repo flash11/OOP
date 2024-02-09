@@ -60,7 +60,7 @@ public class StudentBook {
      * 
      * @param sem Semester.
      */
-    public void addSemester (Semester sem) {
+    public void addSemester(Semester sem) {
         semesters.add(sem);
     }
 
@@ -76,7 +76,8 @@ public class StudentBook {
         Stream<Subject> listOfSubjects = Stream.empty();
 
         for (var semester : semesters ) {
-            listOfSubjects = Stream.concat(listOfSubjects, semester.getListSubjectsOfSemester().stream());
+            listOfSubjects = Stream.concat(listOfSubjects, 
+                semester.getListSubjectsOfSemester().stream());
         }
 
         OptionalDouble avMark = listOfSubjects
@@ -138,9 +139,7 @@ public class StudentBook {
         return  (int) semestersReverse.stream()
                 .flatMap(semester -> semester.getListSubjectsOfSemester().stream())
                 .distinct()
-                /**
-                 * combine all streams to one.
-                 */
+                // combine all streams to one.
                 .mapToInt(Subject::getMark)
                 .filter(mark -> mark == 5)
                 .count();
