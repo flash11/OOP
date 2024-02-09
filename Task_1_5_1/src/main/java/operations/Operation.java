@@ -12,7 +12,7 @@ public abstract class Operation {
     /**
      * recursive method which calculate expressions.
      *
-     * @return double.
+     * @return double result.
      * @throws ArithmeticException exception.
      */
     public abstract double count() throws ArithmeticException;
@@ -20,7 +20,7 @@ public abstract class Operation {
     /**
      * setter.
      *
-     * @param stack.
+     * @param stack Operation type.
      * @throws IllegalArgumentFoundException exception.
      */
     public abstract void setArgsFromStack(Stack<Operation> stack) 
