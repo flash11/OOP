@@ -16,7 +16,7 @@ public class Pow extends Operation {
      * count.
      *
      * @return expression.
-     * @throws ArithmeticException.
+     * @throws ArithmeticException exception.
      */
     @Override
     public double count() throws ArithmeticException {
@@ -27,7 +27,7 @@ public class Pow extends Operation {
      * set from stack.
      *
      * @param stack.
-     * @throws IllegalArgumentFoundException.
+     * @throws IllegalArgumentFoundException exception.
      */
     @Override
     public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {
