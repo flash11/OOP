@@ -18,7 +18,9 @@ public class Calculator {
      * method where scan input data and calculate.
      */
     public static void calculator() {
-       
+        /**
+         * multi-catch.
+         */
         while (true) {
 
             Scanner line = new Scanner(System.in);
