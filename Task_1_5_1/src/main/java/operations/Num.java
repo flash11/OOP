@@ -14,7 +14,7 @@ public class Num extends Operation {
      * set from stack to expr.
      *
      * @param stack.
-     * @throws IllegalArgumentFoundException.
+     * @throws IllegalArgumentFoundException exception.
      */
     @Override
     public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {}
