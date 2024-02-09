@@ -191,28 +191,28 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFinalTask()">getFinalTask</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getName()">getName</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Semester.html" title="class in org.example">Semester</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSemesters()">getSemesters</a></span>()</code></th>
 <td class="colLast">
 <div class="block">create setter and getter.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isRedDiploma()">isRedDiploma</a></span>()</code></th>
 <td class="colLast">
 <div class="block">read last mark of subject to set red diploma.</div>
 </td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#max4Allowed()">max4Allowed</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -262,8 +262,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>StudentBook</h4>
 <pre>public&nbsp;StudentBook&#8203;(java.lang.String&nbsp;name)</pre>
-<div class="block">constructor of class. write who own this book.
- parameter name.</div>
+<div class="block">constructor of class. write who own this book.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - </dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -283,8 +286,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getSemesters</h4>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="Semester.html" title="class in org.example">Semester</a>&gt;&nbsp;getSemesters()</pre>
-<div class="block">create setter and getter.
- return list of semesters.</div>
+<div class="block">create setter and getter.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>list of semesters.</dd>
+</dl>
 </li>
 </ul>
 <a id="setSemesters(java.util.ArrayList)">
@@ -321,17 +327,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setFinalTask</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setFinalTask&#8203;(int&nbsp;mark)</pre>
-<div class="block">initialized mark of final task.
- parameter mark.</div>
-</li>
-</ul>
-<a id="getFinalTask()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getFinalTask</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;getFinalTask()</pre>
+<div class="block">initialized mark of final task.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>mark</code> - </dd>
+</dl>
 </li>
 </ul>
 <a id="addSemester(org.example.Semester)">
@@ -341,8 +341,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>addSemester</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;addSemester&#8203;(<a href="Semester.html" title="class in org.example">Semester</a>&nbsp;sem)</pre>
-<div class="block">add semester to all semesters.
- parameter sem.</div>
+<div class="block">add semester to all semesters.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>sem</code> - </dd>
+</dl>
 </li>
 </ul>
 <a id="averageMark()">
@@ -352,19 +355,34 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>averageMark</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;averageMark()</pre>
-<div class="block">method which calculate average mark.
- return average mark.</div>
+<div class="block">method which calculate average mark.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>average mark.</dd>
+</dl>
 </li>
 </ul>
 <a id="isRedDiploma()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>isRedDiploma</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;isRedDiploma()</pre>
-<div class="block">read last mark of subject to set red diploma.
- return true or false.</div>
+<div class="block">read last mark of subject to set red diploma.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true or false.</dd>
+</dl>
+</li>
+</ul>
+<a id="max4Allowed()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>max4Allowed</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;max4Allowed()</pre>
 </li>
 </ul>
 </li>
