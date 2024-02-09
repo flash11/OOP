@@ -2,17 +2,14 @@ package org.example;
 
 import java.util.ArrayList;
 
-/**
-* class to create semester.
-*/
-
 public class Semester {
 
     private ArrayList<Subject> listSubjectsOfSemester;
 
     /**
      * getter.
-     * return subjects. 
+     * 
+     * @return listSubjectsOfSemester.
      */
 
     public ArrayList<Subject> getListSubjectsOfSemester() {
@@ -29,17 +26,23 @@ public class Semester {
 
     /**
      * method which add subjects and marks.
-     * param1 is nameOfSubject.
-     * param2 is mark.
+     * 
+     * @param nameOfSubject
+     * @param mark
      */
     public void add(String nameOfSubject, int mark) {
         var subj = new Subject(nameOfSubject, mark);
         this.listSubjectsOfSemester.add(subj);
     }
 
+    public void addFutureSubject(String nameOfSubject) {
+        var subj = new Subject(nameOfSubject, 0);
+        this.listSubjectsOfSemester.add(subj);
+    }
+
 
     public boolean noThree() {
-        return listSubjectsOfSemester.stream().allMatch(subject -> subject.getMark() > 3);
+        return listSubjectsOfSemester.stream().allMatch(subject -> subject.getMark() > 3 );
     }
 
     public boolean moneyBonus() {
