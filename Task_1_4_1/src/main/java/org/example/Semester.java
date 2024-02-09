@@ -11,7 +11,6 @@ public class Semester {
      * 
      * @return listSubjectsOfSemester result.
      */
-
     public ArrayList<Subject> getListSubjectsOfSemester() {
         return listSubjectsOfSemester;
     }
