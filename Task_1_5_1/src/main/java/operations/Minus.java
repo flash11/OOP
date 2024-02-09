@@ -15,7 +15,7 @@ public class Minus extends Operation {
     /**
      * count.
      *
-     * @return result.
+     * @return result expression.
      * @throws ArithmeticException exception.
      */
     @Override
@@ -26,7 +26,7 @@ public class Minus extends Operation {
     /**
      * set from stack.
      *
-     * @param stack.
+     * @param stack Operation type.
      * @throws IllegalArgumentFoundException exception.
      */
     @Override
