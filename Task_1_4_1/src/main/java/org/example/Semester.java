@@ -9,7 +9,7 @@ public class Semester {
     /**
      * getter.
      * 
-     * @return listSubjectsOfSemester.
+     * @return listSubjectsOfSemester result.
      */
 
     public ArrayList<Subject> getListSubjectsOfSemester() {
@@ -27,8 +27,8 @@ public class Semester {
     /**
      * method which add subjects and marks.
      * 
-     * @param nameOfSubject
-     * @param mark
+     * @param nameOfSubject String.
+     * @param mark int.
      */
     public void add(String nameOfSubject, int mark) {
         var subj = new Subject(nameOfSubject, mark);
@@ -42,7 +42,7 @@ public class Semester {
 
 
     public boolean noThree() {
-        return listSubjectsOfSemester.stream().allMatch(subject -> subject.getMark() > 3 );
+        return listSubjectsOfSemester.stream().allMatch(subject -> subject.getMark() > 3);
     }
 
     public boolean moneyBonus() {
