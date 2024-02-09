@@ -21,7 +21,7 @@ public class Sqrt extends Operation {
     @Override
     public double count() throws ArithmeticException {
         double expr = expression.count();
-        if (expr < 0){
+        if (expr < 0) {
             throw new SquareRootLessThanZeroException("Нельзя на ноль делить!");
         }
         return Math.sqrt(expr);
