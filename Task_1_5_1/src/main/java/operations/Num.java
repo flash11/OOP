@@ -1,7 +1,6 @@
 package operations;
 
 import exceptions.IllegalArgumentFoundException;
-
 import java.util.Stack;
 
 /**
@@ -14,13 +13,11 @@ public class Num extends Operation {
     /**
      * set from stack to expr.
      *
-     * @param stack
-     * @throws IllegalArgumentFoundException
+     * @param stack.
+     * @throws IllegalArgumentFoundException.
      */
     @Override
-    public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {
-
-    }
+    public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {}
 
     /**
      * count.
@@ -35,7 +32,7 @@ public class Num extends Operation {
     /**
      * constructor.
      *
-     * @param num
+     * @param num.
      */
     public Num(double num){
         this.a1 = num;
