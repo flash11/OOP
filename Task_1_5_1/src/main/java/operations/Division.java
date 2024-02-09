@@ -3,7 +3,6 @@ package operations;
 import exceptions.ArithmeticException;
 import exceptions.DivisionByZeroException;
 import exceptions.IllegalArgumentFoundException;
-
 import java.util.Stack;
 
 /**
@@ -19,7 +18,7 @@ public class Division extends Operation {
      * count.
      *
      * @return divided arg.
-     * @throws ArithmeticException
+     * @throws ArithmeticException.
      */
     @Override
     public double count() throws ArithmeticException {
@@ -33,8 +32,8 @@ public class Division extends Operation {
     /**
      * set from stack.
      *
-     * @param stack
-     * @throws IllegalArgumentFoundException
+     * @param stack.
+     * @throws IllegalArgumentFoundException.
      */
     @Override
     public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {
