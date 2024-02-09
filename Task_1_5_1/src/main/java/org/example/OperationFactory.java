@@ -1,7 +1,6 @@
 package org.example;
 
 import exceptions.IllegalOperatorException;
-
 import operations.Arctg;
 import operations.Cos;
 import operations.Division;
@@ -10,8 +9,8 @@ import operations.Minus;
 import operations.Multiplication;
 import operations.Negative;
 import operations.Operation;
-import operations.Pow;
 import operations.Plus;
+import operations.Pow;
 import operations.Sin;
 import operations.Sqrt;
 
