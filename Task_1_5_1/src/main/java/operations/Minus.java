@@ -2,7 +2,6 @@ package operations;
 
 import exceptions.ArithmeticException;
 import exceptions.IllegalArgumentFoundException;
-
 import java.util.Stack;
 
 /**
@@ -32,7 +31,7 @@ public class Minus extends Operation {
      */
     @Override
     public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {
-        if (stack.size() < 2){
+        if (stack.size() < 2) {
             throw new IllegalArgumentFoundException("");
         }
         expr1 = stack.pop();
