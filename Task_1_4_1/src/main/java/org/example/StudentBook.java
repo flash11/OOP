@@ -39,7 +39,7 @@ public class StudentBook {
     /**
      * initialized mark of final task.
      * 
-     * @param mark
+     * @param mark int.
      */
     public void setFinalTask(int mark) { 
         this.finalTask = mark; 
@@ -48,7 +48,7 @@ public class StudentBook {
     /**
      * constructor of class. write who own this book.
      * 
-     * @param name
+     * @param name string.
      */
     public StudentBook(String name) {
         this.name = name;
@@ -58,7 +58,7 @@ public class StudentBook {
     /**
      * add semester to all semesters.
      * 
-     * @param sem
+     * @param sem Semester.
      */
     public void addSemester (Semester sem) {
         semesters.add(sem);
