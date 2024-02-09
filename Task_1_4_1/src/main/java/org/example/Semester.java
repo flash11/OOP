@@ -2,6 +2,9 @@ package org.example;
 
 import java.util.ArrayList;
 
+/**
+ * Semester class.
+ */
 public class Semester {
 
     private ArrayList<Subject> listSubjectsOfSemester;
