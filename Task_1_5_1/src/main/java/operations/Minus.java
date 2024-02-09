@@ -16,7 +16,7 @@ public class Minus extends Operation {
      * count.
      *
      * @return result.
-     * @throws ArithmeticException.
+     * @throws ArithmeticException exception.
      */
     @Override
     public double count() throws ArithmeticException {
@@ -27,7 +27,7 @@ public class Minus extends Operation {
      * set from stack.
      *
      * @param stack.
-     * @throws IllegalArgumentFoundException.
+     * @throws IllegalArgumentFoundException exception.
      */
     @Override
     public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {
