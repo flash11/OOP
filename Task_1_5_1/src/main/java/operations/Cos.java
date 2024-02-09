@@ -14,7 +14,7 @@ public class Cos extends Operation {
     /**
      * count.
      *
-     * @return cos.
+     * @return cos result.
      * @throws ArithmeticException exception.
      */
     @Override
@@ -25,7 +25,7 @@ public class Cos extends Operation {
     /**
      * set from stack.
      *
-     * @param stack.
+     * @param stack Operation type.
      * @throws IllegalArgumentFoundException exception.
      */
     @Override
