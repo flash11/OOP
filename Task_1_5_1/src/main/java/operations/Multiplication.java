@@ -15,7 +15,7 @@ public class Multiplication extends Operation {
     /**
      * count.
      *
-     * @return multiplication.
+     * @return multiplication result.
      * @throws ArithmeticException exception.
      */
     @Override
@@ -26,7 +26,7 @@ public class Multiplication extends Operation {
     /**
      * set from stack.
      *
-     * @param stack.
+     * @param stack Operation type.
      * @throws IllegalArgumentFoundException exception.
      */
     @Override
