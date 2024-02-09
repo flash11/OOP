@@ -7,10 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /**
- * Testing my methods.
+ * Testing my methods
  */
 public class StudentBookTest {
 
+    private StudentBook studentBook;
 
     @Test
     public void averageMarkTest() {
@@ -25,10 +26,9 @@ public class StudentBookTest {
         studentBook1.addSemester(semester1);
         studentBook1.addSemester(semester2);
 
-        assertEquals(4.4, studentBook1.averageMark());
+        assertEquals(4.5, studentBook1.averageMark());
     }
 
-    
     @Test
     public void noThreeTest() {
 
@@ -45,6 +45,7 @@ public class StudentBookTest {
     }
 
 
+
     @Test
     public void isRedDiplomaTest() {
 
@@ -57,7 +58,6 @@ public class StudentBookTest {
 
         assertFalse(studentBook1.isRedDiploma());
 
-        StudentBook studentBook2 = new StudentBook("Vlad");
         Semester semester2 = new Semester();
         semester2.add("Math", 5);
         semester2.add("Physics", 5);
@@ -65,9 +65,29 @@ public class StudentBookTest {
         studentBook1.setFinalTask(5);
 
         assertTrue(studentBook1.isRedDiploma());
+
+        studentBook1.setFinalTask(0);
+
+        assertTrue(studentBook1.isRedDiploma());
+
+
+    }
+    @Test
+    public void max4AllowedTest() {
+        StudentBook studentBook2 = new StudentBook("Vlad");
+        Semester semesterFirst = new Semester();
+        semesterFirst.add("Bio", 5);
+        semesterFirst.add("Music", 5);
+        Semester semesterSecond = new Semester();
+        semesterSecond.addFutureSubject("Math");
+        semesterSecond.addFutureSubject("Rus");
+        studentBook2.addSemester(semesterFirst);
+        studentBook2.addSemester(semesterSecond);
+
+        assertEquals(1, studentBook2.max4Allowed());
     }
 
-    
+
     @Test
     public void moneyBonusTest() {
 
@@ -82,4 +102,5 @@ public class StudentBookTest {
         assertFalse(semester1.moneyBonus());
 
     }
+    
 }
