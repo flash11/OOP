@@ -18,7 +18,7 @@ public class Division extends Operation {
      * count.
      *
      * @return divided arg.
-     * @throws ArithmeticException.
+     * @throws ArithmeticException exception.
      */
     @Override
     public double count() throws ArithmeticException {
@@ -33,7 +33,7 @@ public class Division extends Operation {
      * set from stack.
      *
      * @param stack.
-     * @throws IllegalArgumentFoundException.
+     * @throws IllegalArgumentFoundException exception.
      */
     @Override
     public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {
