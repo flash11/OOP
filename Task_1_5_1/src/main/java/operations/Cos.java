@@ -2,7 +2,6 @@ package operations;
 
 import exceptions.ArithmeticException;
 import exceptions.IllegalArgumentFoundException;
-
 import java.util.Stack;
 
 /**
@@ -16,7 +15,7 @@ public class Cos extends Operation {
      * count.
      *
      * @return cos.
-     * @throws ArithmeticException
+     * @throws ArithmeticException.
      */
     @Override
     public double count() throws ArithmeticException {
@@ -26,8 +25,8 @@ public class Cos extends Operation {
     /**
      * set from stack.
      *
-     * @param stack
-     * @throws IllegalArgumentFoundException
+     * @param stack.
+     * @throws IllegalArgumentFoundException.
      */
     @Override
     public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {
