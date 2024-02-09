@@ -1,11 +1,13 @@
 package org.example;
 
-import exceptions.*;
-
 import exceptions.ArithmeticException;
+import exceptions.DivisionByZeroException;
+import exceptions.IllegalArgumentFoundException;
+import exceptions.IllegalOperatorException;
+import exceptions.LogarithmIncorrectArgumentException;
+import exceptions.SquareRootLessThanZeroException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import operations.Negative;
 import operations.Num;
 import operations.Operation;
@@ -117,7 +119,9 @@ public class CalculatorTest {
 
     @Test
     public void testDivisionByZero() {
-        Assertions.assertThrows(DivisionByZeroException.class, () -> { Calculator.calculateExpression("/ 1 0"); }, "Division by zero should throw DivisionByZeroException");
+        Assertions.assertThrows(DivisionByZeroException.class, () -> { 
+            Calculator.calculateExpression("/ 1 0");
+        }, "Division by zero should throw DivisionByZeroException");
     }
 
      @Test
