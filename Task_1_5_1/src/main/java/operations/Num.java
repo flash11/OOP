@@ -13,7 +13,7 @@ public class Num extends Operation {
     /**
      * set from stack to expr.
      *
-     * @param stack.
+     * @param stack Operation type.
      * @throws IllegalArgumentFoundException exception.
      */
     @Override
@@ -22,7 +22,7 @@ public class Num extends Operation {
     /**
      * count.
      *
-     * @return a1.
+     * @return a1 Number.
      */
     @Override
     public double count() {
@@ -32,7 +32,7 @@ public class Num extends Operation {
     /**
      * constructor.
      *
-     * @param num.
+     * @param num Douple type.
      */
     public Num(double num){
         this.a1 = num;
