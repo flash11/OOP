@@ -6,12 +6,12 @@ import exceptions.IllegalArgumentFoundException;
 import exceptions.IllegalOperatorException;
 import exceptions.LogarithmIncorrectArgumentException;
 import exceptions.SquareRootLessThanZeroException;
+import java.util.Stack;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import operations.Negative;
 import operations.Num;
 import operations.Operation;
-import java.util.Stack;
 
 
 public class CalculatorTest {
@@ -125,7 +125,8 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testCombinedOperations() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+    public void testCombinedOperations() throws IllegalArgumentFoundException, 
+        ArithmeticException, IllegalOperatorException {
         Double result = Calculator.calculateExpression("+ * 2 3 4");
         Assertions.assertEquals(10.0, result, "2 * 3 + 4 should be 10");
     }
@@ -138,13 +139,15 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testLargeNumbers() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+    public void testLargeNumbers() throws IllegalArgumentFoundException, 
+        ArithmeticException, IllegalOperatorException {
         Double result = Calculator.calculateExpression("+ 99999999 1");
         Assertions.assertEquals(100000000.0, result, "99999999 + 1 should be 100000000");
     }
 
     @Test
-    public void testSmallNumbers() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
+    public void testSmallNumbers() throws IllegalArgumentFoundException, 
+        ArithmeticException, IllegalOperatorException {
         Double result = Calculator.calculateExpression("* 0.0001 0.0002");
         Assertions.assertEquals(0.00000002, result, "0.0001 * 0.0002 should be 0.00000002");
     }
