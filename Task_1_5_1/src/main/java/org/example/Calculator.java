@@ -9,9 +9,6 @@ import exceptions.SquareRootLessThanZeroException;
 import java.util.Scanner;
 import operations.Operation;
 
-
-
-
 /**
  * class which calculate.
  */
