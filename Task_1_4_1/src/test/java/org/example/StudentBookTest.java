@@ -44,8 +44,6 @@ public class StudentBookTest {
 
     }
 
-
-
     @Test
     public void isRedDiplomaTest() {
 
@@ -69,9 +67,9 @@ public class StudentBookTest {
         studentBook1.setFinalTask(0);
 
         assertTrue(studentBook1.isRedDiploma());
-
-
     }
+
+    
     @Test
     public void max4AllowedTest() {
         StudentBook studentBook2 = new StudentBook("Vlad");
