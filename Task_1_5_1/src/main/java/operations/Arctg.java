@@ -14,7 +14,7 @@ public class Arctg extends Operation {
     /**
      * count.
      *
-     * @return atan.
+     * @return atan result.
      * @throws ArithmeticException exception.
      */
     @Override
@@ -25,7 +25,7 @@ public class Arctg extends Operation {
     /**
      * set from stack.
      *
-     * @param stack.
+     * @param stack OPeration type.
      * @throws IllegalArgumentFoundException exception.
      */
     @Override
