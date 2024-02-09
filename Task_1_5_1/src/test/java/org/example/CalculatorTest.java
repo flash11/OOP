@@ -124,7 +124,7 @@ public class CalculatorTest {
         }, "Division by zero should throw DivisionByZeroException");
     }
 
-     @Test
+    @Test
     public void testCombinedOperations() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
         Double result = Calculator.calculateExpression("+ * 2 3 4");
         Assertions.assertEquals(10.0, result, "2 * 3 + 4 should be 10");
@@ -141,13 +141,13 @@ public class CalculatorTest {
     public void testLargeNumbers() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
         Double result = Calculator.calculateExpression("+ 99999999 1");
         Assertions.assertEquals(100000000.0, result, "99999999 + 1 should be 100000000");
-}
+    }
 
     @Test
     public void testSmallNumbers() throws IllegalArgumentFoundException, ArithmeticException, IllegalOperatorException {
         Double result = Calculator.calculateExpression("* 0.0001 0.0002");
         Assertions.assertEquals(0.00000002, result, "0.0001 * 0.0002 should be 0.00000002");
-}
+    }
 
         
     @Test
@@ -159,17 +159,16 @@ public class CalculatorTest {
 
     @Test
     public void testSquareRootOfNegativeNumberThrowsException() {
-    Assertions.assertThrows(SquareRootLessThanZeroException.class, () -> {
-        Calculator.calculateExpression("sqrt -4");
-    }, "Square root of a negative number should throw SquareRootLessThanZeroException");
-}
+        Assertions.assertThrows(SquareRootLessThanZeroException.class, () -> {
+            Calculator.calculateExpression("sqrt -4");
+        }, "Square root of a negative number should throw SquareRootLessThanZeroException");
+    }
 
     @Test
     public void testOperationWithInsufficientArgumentsThrowsException() {
-    Assertions.assertThrows(IllegalArgumentFoundException.class, () -> {
-        Calculator.calculateExpression("+ 5"); // Только один аргумент вместо двух
-    }, "Operation with insufficient arguments should throw IllegalArgumentFoundException");
-}
-
+        Assertions.assertThrows(IllegalArgumentFoundException.class, () -> {
+            Calculator.calculateExpression("+ 5"); 
+        }, "Operation with insufficient arguments should throw IllegalArgumentFoundException");
+    }
 
 }
