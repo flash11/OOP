@@ -2,7 +2,6 @@ package operations;
 
 import exceptions.ArithmeticException;
 import exceptions.IllegalArgumentFoundException;
-
 import java.util.Stack;
 
 /**
@@ -17,7 +16,7 @@ public class Plus extends Operation {
      * count.
      *
      * @return expression.
-     * @throws ArithmeticException
+     * @throws ArithmeticException.
      */
     @Override
     public double count() throws ArithmeticException {
@@ -27,17 +26,16 @@ public class Plus extends Operation {
     /**
      * set from stack.
      *
-     * @param stack
-     * @throws IllegalArgumentFoundException
+     * @param stack.
+     * @throws IllegalArgumentFoundException.
      */
     @Override
     public void setArgsFromStack(Stack<Operation> stack) throws IllegalArgumentFoundException {
-        if (stack.size() < 2){
+        if (stack.size() < 2) {
             throw new IllegalArgumentFoundException("");
         }
         expr1 = stack.pop();
         expr2 = stack.pop();
-
 
     }
 }
