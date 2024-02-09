@@ -32,7 +32,7 @@ public class Division extends Operation {
     /**
      * set from stack.
      *
-     * @param stack.
+     * @param stack Operation type.
      * @throws IllegalArgumentFoundException exception.
      */
     @Override
