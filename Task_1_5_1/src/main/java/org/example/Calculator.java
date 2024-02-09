@@ -18,9 +18,7 @@ public class Calculator {
      * method where scan input data and calculate.
      */
     public static void calculator() {
-        /**
-         * using multi-catch that present all exceptions.
-         */
+       
         while (true) {
 
             Scanner line = new Scanner(System.in);
@@ -51,7 +49,8 @@ public class Calculator {
      * @throws SquareRootLessThanZeroException SquareRootLessThanZero
      * @throws IllegalOperatorException Illegal Operator
      */
-    public static Double calculateExpression(String expression) throws IllegalArgumentFoundException,
+    public static Double calculateExpression(String expression) 
+        throws IllegalArgumentFoundException,
             ArithmeticException, IllegalOperatorException {
 
         Operation operation = Parser.parse(expression);
