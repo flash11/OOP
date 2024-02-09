@@ -15,7 +15,7 @@ public class Sqrt extends Operation {
     /**
      * count.
      *
-     * @return expression.
+     * @return expression result.
      * @throws ArithmeticException exception.
      */
     @Override
@@ -30,7 +30,7 @@ public class Sqrt extends Operation {
     /**
      * set from stack.
      *
-     * @param stack.
+     * @param stack Operation type.
      * @throws IllegalArgumentFoundException exception.
      */
     @Override
