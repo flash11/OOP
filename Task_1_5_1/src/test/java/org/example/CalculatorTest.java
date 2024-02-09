@@ -7,11 +7,11 @@ import exceptions.IllegalOperatorException;
 import exceptions.LogarithmIncorrectArgumentException;
 import exceptions.SquareRootLessThanZeroException;
 import java.util.Stack;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import operations.Negative;
 import operations.Num;
 import operations.Operation;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 
 public class CalculatorTest {
