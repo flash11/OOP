@@ -10,15 +10,14 @@ import java.util.stream.Stream;
  */
 
 public class StudentBook {
-
     private ArrayList<Semester> semesters;
     private String name;
-
-    private int finalTask;
+    private int finalTask = 0;
 
     /**
      * create setter and getter.
-     * return list of semesters.
+     * 
+     * @return list of semesters.
      */
     public ArrayList<Semester> getSemesters() {
         return semesters;
@@ -36,31 +35,30 @@ public class StudentBook {
         this.name = name;
     }
 
+
     /**
      * initialized mark of final task.
-     * parameter mark.
+     * 
+     * @param mark
      */
     public void setFinalTask(int mark) { 
         this.finalTask = mark; 
     }
 
-    public int getFinalTask() { 
-        return finalTask; 
-    }
-
     /**
      * constructor of class. write who own this book.
-     * parameter name.
+     * 
+     * @param name
      */
     public StudentBook(String name) {
         this.name = name;
         this.semesters = new ArrayList<Semester>();
-
     }
 
     /**
      * add semester to all semesters.
-     * parameter sem.
+     * 
+     * @param sem
      */
     public void addSemester (Semester sem) {
         semesters.add(sem);
@@ -68,9 +66,12 @@ public class StudentBook {
 
     /**
      * method which calculate average mark.
-     * return average mark.
+     * 
+     * @return average mark.
      */
     public double averageMark() {
+
+        Collections.reverse(semesters);
 
         Stream<Subject> listOfSubjects = Stream.empty();
 
@@ -79,25 +80,62 @@ public class StudentBook {
         }
 
         OptionalDouble avMark = listOfSubjects
+                .distinct()
                 .mapToInt(x -> x.getMark())
+                .filter(mark -> mark != 0)
                 .average();
-        if (avMark.isEmpty()){
+        if (avMark.isEmpty()) {
             return 0.0;
         }
         return Math.ceil(avMark.getAsDouble() * 10) / 10;
-
     }
 
 
     /**
      * read last mark of subject to set red diploma.
-     * return true or false.
+     *
+     * @return true or false.
      */
     public boolean isRedDiploma() {
 
-        Collections.reverse(semesters);
+        ArrayList<Semester> tmpSemesters = new ArrayList<>(semesters);
 
-        int count5 = (int) semesters.stream()
+        Collections.reverse(tmpSemesters);
+
+        int count5 = countFives(tmpSemesters);
+        
+        boolean noThreeAtAll = tmpSemesters.stream().allMatch(semester -> semester.noThree());
+
+        int countSubjects = countSubjects(tmpSemesters);
+        int countFutureSubs = countFutureSubjects(tmpSemesters);
+        
+        double avg5 = (count5 + countFutureSubs) / (double) countSubjects;
+
+        if (finalTask != 0) {
+            return finalTask == 5 && avg5 >= 0.75 && noThreeAtAll;
+        } else {
+            return  avg5 >= 0.75 && noThreeAtAll;
+        }
+    }
+
+    public int max4Allowed() {
+        ArrayList<Semester> tmpSemesters = new ArrayList<>(semesters);
+
+        Collections.reverse(tmpSemesters);
+
+        int count5 = countFives(tmpSemesters);
+
+        int countSubjects = countSubjects(tmpSemesters);
+        int countFutureSubs = countFutureSubjects(tmpSemesters);
+
+
+        int min5 = (int) Math.ceil(0.75 * (double) countSubjects - count5);
+
+        return countFutureSubs - min5;
+    }
+
+    private int countFives(ArrayList<Semester> semestersReverse) {
+        return  (int) semestersReverse.stream()
                 .flatMap(semester -> semester.getListSubjectsOfSemester().stream())
                 .distinct()
                 /**
@@ -106,18 +144,21 @@ public class StudentBook {
                 .mapToInt(Subject::getMark)
                 .filter(mark -> mark == 5)
                 .count();
-
-        int count4 = (int) semesters.stream()
-                .flatMap(semester -> semester.getListSubjectsOfSemester().stream())
-                .distinct()
-                .mapToInt(Subject::getMark)
-                .filter(mark -> mark == 4)
-                .count();
-
-        boolean noThreeAtAll = semesters.stream().allMatch(semester -> semester.noThree());
-
-        return finalTask == 5 && ((double) count5 / (count4 + count5)) >= 0.75 && noThreeAtAll;
-
     }
 
+    private int countSubjects(ArrayList<Semester> semestersReverse) {
+        return (int) semestersReverse.stream()
+                .flatMap(semester -> semester.getListSubjectsOfSemester().stream())
+                .distinct()
+                .count();
+    }
+
+    private int countFutureSubjects(ArrayList<Semester> semestersReverse) {
+        return (int) semestersReverse.stream()
+                .flatMap(semester -> semester.getListSubjectsOfSemester().stream())
+                .distinct()
+                .filter(subject -> subject.getMark() == 0)
+                .count();
+    }
+    
 }
