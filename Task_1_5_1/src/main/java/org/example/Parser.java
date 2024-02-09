@@ -11,8 +11,13 @@ import operations.Operation;
  */
 public class Parser {
     /**
-    * parse method.
-    */
+     * parser.
+     * 
+     * @param expression my.
+     * @return structured expr.
+     * @throws IllegalArgumentFoundException see package.
+     * @throws IllegalOperatorException see package.
+     */
     public static Operation parse(String expression) 
         throws IllegalArgumentFoundException, IllegalOperatorException {
 
