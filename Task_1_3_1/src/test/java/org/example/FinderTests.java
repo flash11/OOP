@@ -18,13 +18,7 @@ public class FinderTests {
     public void russianLangtest() {
         Finder finder = new Finder();
         ArrayList<Integer> result;
-        try {
-            result = finder.find("russianLang.txt", "вет", true);
-        }
-        catch (IOException e) {
-            throw new RuntimeException("Invalid situation");
-        }
-
+        result = finder.find("russianLang.txt", "вет", true);
         ArrayList<Integer> predictedList = new ArrayList<>();
         predictedList.add(3);
         Assertions.assertEquals(predictedList, result);
@@ -34,13 +28,7 @@ public class FinderTests {
     public void koreanLangtest() {
         Finder finder = new Finder();
         ArrayList<Integer> result;
-        try {
-            result = finder.find("specialKoreanSymbols.txt", "녕하", true);
-        }
-        catch (IOException e) {
-            throw new RuntimeException("Invalid situation");
-        }
-
+        result = finder.find("specialKoreanSymbols.txt", "녕하", true);
         ArrayList<Integer> predictedList = new ArrayList<>();
         predictedList.add(1);
         Assertions.assertEquals(predictedList, result);
@@ -58,7 +46,7 @@ public class FinderTests {
             writer.write(twoMbString.toString());
             writer.flush();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            Assertions.fail("Big file couldn't be created");
         }
     }
 
@@ -66,7 +54,7 @@ public class FinderTests {
         try {
             Files.delete(Paths.get("large.txt"));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return;
         }
     }
 
@@ -75,13 +63,7 @@ public class FinderTests {
         Finder finder = new Finder();
         write16gbTestFile();
         ArrayList<Integer> result;
-        try {
-            result = finder.find("large.txt", "qq", false);
-        }
-        catch (IOException e) {
-            throw new RuntimeException("Invalid situation");
-        }
-
+        result = finder.find("large.txt", "qq", false);
         ArrayList<Integer> predictedList = new ArrayList<>();
         predictedList.add(1000000);
         Assertions.assertEquals(predictedList, result);

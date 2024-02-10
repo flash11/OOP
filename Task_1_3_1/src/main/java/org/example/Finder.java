@@ -31,13 +31,16 @@ public class Finder {
     }
 
     // алгоритм поиска
-    public ArrayList<Integer> find(String filename, String subSequence, boolean useResource) throws IOException {
+    public ArrayList<Integer> find(String filename, String subSequence, boolean useResource) {
 
-        if (useResource) {
-            openFileFromResources(filename);
-        }
-        else {
-            openFileFromRoot(filename);
+        try {
+            if (useResource) {
+                openFileFromResources(filename);
+            } else {
+                openFileFromRoot(filename);
+            }
+        } catch (IOException e) {
+            return new ArrayList<>();
         }
 
         char[] tmpBuffer = new char[BUFFER_SIZE];
@@ -46,8 +49,21 @@ public class Finder {
         int readCounter = -1; // сколько буферов прочитали
         ArrayList<Integer> result = new ArrayList<>();
 
-        while (bufferedPartOfFile.ready()) {
-            bufferedPartOfFile.read(tmpBuffer, 0, tmpBuffer.length);
+        boolean bufferReady;
+
+        try {
+            bufferReady = bufferedPartOfFile.ready();
+        } catch (IOException e) {
+            return null;
+        }
+
+        while (bufferReady) {
+            try {
+                bufferedPartOfFile.read(tmpBuffer, 0, tmpBuffer.length);
+            } catch (IOException e) {
+                return null;
+            }
+
             readCounter++;
             for (int i = 0; i < tmpBuffer.length; i++) {
                 if (tmpBuffer[i] == subSequence.charAt(currLen)) {
@@ -83,8 +99,17 @@ public class Finder {
                     }
                 }
             }
+            try {
+                bufferReady = bufferedPartOfFile.ready();
+            } catch (IOException e) {
+                return null;
+            }
         }
-        bufferedPartOfFile.close();
+        try {
+            bufferedPartOfFile.close();
+        } catch (IOException e) {
+            return result;
+        }
         return result;
     }
 
