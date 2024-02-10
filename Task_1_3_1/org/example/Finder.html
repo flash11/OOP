@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Finder</span>
 extends java.lang.Object</pre>
+<div class="block">class for finding subSequence.</div>
 </li>
 </ul>
 </div>
@@ -178,17 +179,23 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#find(java.lang.String,java.lang.String,boolean)">find</a></span>&#8203;(java.lang.String&nbsp;filename,
     java.lang.String&nbsp;subSequence,
     boolean&nbsp;useResource)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Finding algorithm.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#openFileFromResources(java.lang.String)">openFileFromResources</a></span>&#8203;(java.lang.String&nbsp;filename)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">First way to read file.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#openFileFromRoot(java.lang.String)">openFileFromRoot</a></span>&#8203;(java.lang.String&nbsp;filename)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Second way to read file.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -240,6 +247,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>openFileFromResources</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;openFileFromResources&#8203;(java.lang.String&nbsp;filename)</pre>
+<div class="block">First way to read file.
+ Reading from resources, using relative path.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - any.</dd>
+</dl>
 </li>
 </ul>
 <a id="openFileFromRoot(java.lang.String)">
@@ -250,9 +263,14 @@ extends java.lang.Object</pre>
 <h4>openFileFromRoot</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;openFileFromRoot&#8203;(java.lang.String&nbsp;filename)
                       throws java.io.IOException</pre>
+<div class="block">Second way to read file.
+
+ Any path possible.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - anyName.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - FileNotFound.</dd>
 </dl>
 </li>
 </ul>
@@ -265,6 +283,16 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;java.lang.Integer&gt;&nbsp;find&#8203;(java.lang.String&nbsp;filename,
                                                    java.lang.String&nbsp;subSequence,
                                                    boolean&nbsp;useResource)</pre>
+<div class="block">Finding algorithm.
+ manually set how to read the file.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filename</code> - anyName.</dd>
+<dd><code>subSequence</code> - this we search.</dd>
+<dd><code>useResource</code> - how to open file.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>array of repetition.</dd>
+</dl>
 </li>
 </ul>
 </li>
