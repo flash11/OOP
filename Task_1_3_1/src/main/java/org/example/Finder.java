@@ -1,36 +1,63 @@
 package org.example;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.List;
 
+
+/**
+ * class for finding subSequence.
+ */
 public class Finder {
     final int BUFFER_SIZE = 1024;
     BufferedReader bufferedPartOfFile;
 
-    // чтение из ресурса и будут относительные пути
+    /**
+     * First way to read file.
+     * Reading from resources, using relative path.
+     *
+     * @param filename any.
+     */
     public void openFileFromResources(String filename) {
-        // мы обращаемся к объету класса Finder, далее мы получаем информацию о Ресурсах, делаем из этого поток ввода
+        // Обращаемся к объекту класса Finder, далее мы получаем информацию о Ресурсах, делаем из этого поток ввода.
         InputStream resourceInputStream =
                 Finder.class.getClassLoader().getResourceAsStream(filename);
 
-        // теперь он будет принимать char
+        // inputStreamReader принимать char в кодировке utf-8
         InputStreamReader inputStreamReader = new InputStreamReader(
                 resourceInputStream, StandardCharsets.UTF_8);
 
-        // читает и загружает в буфер
+        // Чтение и загрузка в буфер
         bufferedPartOfFile = new BufferedReader(inputStreamReader);
-
     }
 
-    // чтение из любого пути
+
+    /**
+     * Second way to read file.
+     *
+     * Any path possible.
+     * @param filename anyName.
+     * @throws IOException FileNotFound.
+     */
     public void openFileFromRoot(String filename) throws IOException {
         bufferedPartOfFile = new BufferedReader(
                 new FileReader(filename, StandardCharsets.UTF_8));
     }
 
-    // алгоритм поиска
+
+    /**
+     * Finding algorithm.
+     * manually set how to read the file.
+     *
+     * @param filename anyName.
+     * @param subSequence this we search.
+     * @param useResource how to open file.
+     * @return array of repetition.
+     */
     public ArrayList<Integer> find(String filename, String subSequence, boolean useResource) {
 
         try {
@@ -44,13 +71,13 @@ public class Finder {
         }
 
         char[] tmpBuffer = new char[BUFFER_SIZE];
-        int currLen = 0; // проходится по подстроке и считать вхождение
-        int expectedPos = -1; // индекс в масштабах одного файла
-        int readCounter = -1; // сколько буферов прочитали
+        int currLen = 0; // Проходится по подстроке и считает вхождения.
+        int expectedPos = -1; // Индекс в масштабах одного файла.
+        int readCounter = -1; // Сколько буферов прочитали.
+
         ArrayList<Integer> result = new ArrayList<>();
 
         boolean bufferReady;
-
         try {
             bufferReady = bufferedPartOfFile.ready();
         } catch (IOException e) {
@@ -65,28 +92,30 @@ public class Finder {
             }
 
             readCounter++;
+
             for (int i = 0; i < tmpBuffer.length; i++) {
                 if (tmpBuffer[i] == subSequence.charAt(currLen)) {
                     if (currLen == 0) {
                         expectedPos = i + readCounter * BUFFER_SIZE;
                     }
-                    int k = 1; // сдвиг внутри буфера от первого попадания
+                    int k = 1; // Сдвиг внутри буфера от первого попадания.
                     currLen++;
+
                     if (currLen == subSequence.length()) {
                         result.add(expectedPos);
                         expectedPos = -1;
                         currLen = 0;
-                        continue; // возвращение к следующему for
+                        continue; // Comeback to for.
                     }
 
-                    // i + k не должно превышать буфер
+                    // i + k не должно превышать буфер.
                     while (expectedPos != -1 && (i + k != tmpBuffer.length)) {
                         if (tmpBuffer[i + k] == subSequence.charAt(currLen)) {
                             k++;
                             currLen++;
                         } else {
                             currLen = 0;
-                            break; // выход их while к последнему if
+                            break; // exit while.
                         }
                         if (currLen == subSequence.length()) {
                             result.add(expectedPos);
@@ -112,5 +141,4 @@ public class Finder {
         }
         return result;
     }
-
 }
