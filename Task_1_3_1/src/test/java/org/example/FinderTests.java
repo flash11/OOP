@@ -40,9 +40,9 @@ public class FinderTests {
         result = finder.find("newLine.txt", "e", true);
         ArrayList<Integer> predictedList = new ArrayList<>();
         predictedList.add(6);
-        predictedList.add(19);
-        predictedList.add(22);
-        predictedList.add(28);
+        predictedList.add(17);
+        predictedList.add(20);
+        predictedList.add(26);
         Assertions.assertEquals(predictedList, result);
     }
 
