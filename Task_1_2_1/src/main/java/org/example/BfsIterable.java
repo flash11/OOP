@@ -3,6 +3,7 @@ package org.example;
 import java.util.ArrayDeque;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Provides an iterable interface for breadth-first traversal of a Tree.
@@ -23,6 +24,7 @@ public class BfsIterable<T> implements Iterable<T> {
         public BfsIterator() {
             bfsQueue = new ArrayDeque<Tree<T>>();
             bfsQueue.add(treeNode);
+            treeNode.setTraverseProtection(true);
         }
 
         /**
@@ -44,12 +46,15 @@ public class BfsIterable<T> implements Iterable<T> {
          */
         @Override
         public T next() {
-            Tree<T> currentNode = bfsQueue.pollFirst();
-            if (currentNode.getNodeValue() == null) {
-                throw new ConcurrentModificationException();
+            if (!hasNext()) {
+                throw new NoSuchElementException();
             }
-
-            bfsQueue.addAll(currentNode.nodeChildren);
+            Tree<T> currentNode = bfsQueue.pollFirst();
+            for (var child : currentNode.nodeChildren) {
+                child.setTraverseProtection(true);
+                bfsQueue.add(child);
+            }
+            currentNode.setTraverseProtection(false);
             return currentNode.getNodeValue();
         }
     }
