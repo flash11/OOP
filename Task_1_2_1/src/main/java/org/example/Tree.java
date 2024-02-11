@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
 
 /**
  * Represents a tree data structure that stores generic values T.
@@ -14,6 +16,7 @@ public class Tree<T> {
     private Tree<T> nodeParent;
     // The value stored at this tree node.
     private T nodeValue;
+    private boolean traverseProtection = false;
 
     /**
      * Gets the parent of this node.
@@ -51,9 +54,10 @@ public class Tree<T> {
      * @param value The value to store in the node.
      */
     public Tree(T value) {
-        this.nodeChildren = new ArrayList<Tree<T>>();
+        this.nodeChildren = new ArrayList<Tree<T>>(); // initialized
         setNodeValue(value);
     }
+
 
     /**
      * Adds a child subtree. Sets this tree as the parent of the subtree.
@@ -64,8 +68,9 @@ public class Tree<T> {
      */
     public Tree<T> addChild(Tree<T> subtree) {
         if (subtree.nodeParent == null) {
-            subtree.nodeParent = this;
+            subtree.nodeParent = this; // pointer to caller object
             this.nodeChildren.add(subtree);
+            return subtree;
         }
 
         return null;
@@ -87,19 +92,59 @@ public class Tree<T> {
     }
 
     /**
-     * Removes this node and all its children from the tree.
+     * Removes this node from the tree.
+     */
+    private void realRemove() {
+        for (var child : nodeChildren) {
+            child.nodeParent = null;
+        }
+        nodeChildren.clear();
+        if (nodeParent != null) {
+
+            this.nodeParent.nodeChildren.remove(this);
+
+            nodeParent = null;
+
+        }
+        nodeValue = null;
+    }
+
+    /**
+     * Проверяет, защищена ли вершина или её предки.
+     *
+     * @return isProtected.
+     */
+    public boolean isProtected() {
+        Tree<T> vertex = this;
+        while (vertex != null) {
+            if (vertex.traverseProtection)
+                return true;
+            vertex = vertex.nodeParent;
+        }
+        return false;
+    }
+
+    /*
+        Обёртка над реальным удалением, которая будет проверять, выставлен ли флаг защиты
+        Если флаг защиты стоит, будет выброшено ConcurrentModification
+     */
+
+    /**
+     * Обёртка над реальным удалением, которая будет проверять, выставлен ли флаг защиты.
+     * Если флаг защиты стоит, будет выброшено ConcurrentModification.
      */
     public void remove() {
-        while (!nodeChildren.isEmpty()) {
-            nodeChildren.get(0).remove();
-        }
+        if (isProtected())
+            throw new ConcurrentModificationException("Cannot remove vertex in traversing or its descendant");
+        realRemove();
+    }
 
-        if (nodeParent != null) {
-            nodeParent.nodeChildren.remove(this);
-            nodeParent = null;
-        }
+    public void setTraverseProtection(boolean traverseProtection) {
+        this.traverseProtection = traverseProtection;
+    }
 
-        nodeValue = null;
+    public boolean isTraverseProtection() {
+        return traverseProtection;
     }
 
     /**
@@ -107,6 +152,7 @@ public class Tree<T> {
      *
      * @return The flattened subtree values.
      */
+    // cчитаем все от точки отсчета
     private ArrayList<T> subtreeStuff() {
         var childrenValues = new ArrayList<T>();
         for (Tree<T> child : nodeChildren) {
@@ -176,24 +222,5 @@ public class Tree<T> {
      */
     public Iterable<T> dfs() {
         return new DfsIterable<T>(this);
-    }
-
-    /**
-     * Main function. First Point.
-     *
-     * @param args cmd args.
-     */
-    @ExcludeFromJacocoGeneratedReport
-    public static void main(String[] args) {
-        Tree<Integer> treeI = new Tree<>(1);
-        Tree<Integer> child1 = treeI.addChild(3);
-        Tree<Integer> child2 = treeI.addChild(2);
-        child1.addChild(5);
-        child2.addChild(4);
-
-        for (Integer a : treeI.dfs()) {
-            System.out.print(a + " ");
-        }
-
     }
 }
