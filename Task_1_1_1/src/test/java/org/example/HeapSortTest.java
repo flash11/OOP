@@ -6,8 +6,14 @@ import java.util.Random;
 import org.example.HeapSort;
 import org.junit.jupiter.api.Test;
 
+/**
+ * HeapSortTest.
+ */    
 public class HeapSortTest {
 
+   /**
+    * testHeapSort.
+    */  
     @Test
     public void testHeapSort() {
         int[] arr = {12, 11, 13, 5, 6, 7};
@@ -18,6 +24,9 @@ public class HeapSortTest {
         assertArrayEquals(expected, arr);
     }
 
+   /**
+    * testEmptyArray.
+    */  
     @Test
     public void testEmptyArray() {
         int[] arr = {};
@@ -28,6 +37,9 @@ public class HeapSortTest {
         assertArrayEquals(expected, arr);
     }
 
+   /**
+    * testArrayWithDuplicates.
+    */  
     @Test
     public void testArrayWithDuplicates() {
         int[] arr = {5, 4, 5, 5, 5};
@@ -38,16 +50,17 @@ public class HeapSortTest {
         assertArrayEquals(expected, arr);
     }
 
+    /**
+    * testMassiveArray.
+    */ 
     @Test
     public void testMassiveArray() {
         int[] arr = new int[100000];
         Random random = new Random();
-        for (int i = 0; i < 100000; i++)
-        {
+        for (int i = 0; i < 100000; i++) {
             int n = random.nextInt(Integer.MAX_VALUE);
             arr[i] = n;
         }
-
         int[] expected = Arrays.copyOf(arr, 100000);
 
         Arrays.sort(expected);
