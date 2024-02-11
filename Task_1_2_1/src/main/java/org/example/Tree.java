@@ -117,8 +117,9 @@ public class Tree<T> {
     public boolean isProtected() {
         Tree<T> vertex = this;
         while (vertex != null) {
-            if (vertex.traverseProtection)
+            if (vertex.traverseProtection) {
                 return true;
+            }
             vertex = vertex.nodeParent;
         }
         return false;
@@ -134,8 +135,11 @@ public class Tree<T> {
      * Если флаг защиты стоит, будет выброшено ConcurrentModification.
      */
     public void remove() {
-        if (isProtected())
-            throw new ConcurrentModificationException("Cannot remove vertex in traversing or its descendant");
+        if (isProtected()) {
+            throw new ConcurrentModificationException(
+                "Cannot remove vertex in traversing or its descendant"
+            );
+        }
         realRemove();
     }
 
