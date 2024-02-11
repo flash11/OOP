@@ -1,16 +1,13 @@
 package org.example;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class TreeTest {
 
@@ -150,12 +147,13 @@ class TreeTest {
         assertNull(treeS.getNodeParent());
     }
 
+
     @Test
     void testRemoveChildS() {
         Tree<String> child = new Tree<>("RootChild");
         treeS.addChild(child);
         treeS.remove();
-        assertNull(child.getNodeValue());
+        assertEquals("RootChild", child.getNodeValue());
     }
 
     @Test
@@ -274,8 +272,32 @@ class TreeTest {
         assertEquals(expected, result);
     }
 
+
     @Test
-    void testBfsConcurrentException() {
+    void testBfsConcurrentExceptionBeforeTraverse() {
+        Tree<String> child1 = treeS.addChild("B");
+        Tree<String> child2 = treeS.addChild("A");
+        child1.addChild("B_child");
+        child2.addChild("A2");
+        child2.addChild("A1");
+
+
+        ArrayList<String> result = new ArrayList<>();
+        for (String curVal : treeS.bfs()) {
+            if (curVal.equals("A2"))
+                child2.remove();
+            result.add(curVal);
+        }
+        ArrayList<String> expected =
+                new ArrayList<>(Arrays.asList("Root", "B", "A", "B_child", "A2", "A1"));
+        assertEquals(expected, result);
+    }
+
+    /*
+        Здесь мы пытаемся удалить вершину ниже текущего обхода BFS, поэтому получим ConcurrentModificationException
+     */
+    @Test
+    void testBfsConcurrentExceptionAfterTraverse() {
         Tree<String> child1 = treeS.addChild("B");
         Tree<String> child2 = treeS.addChild("A");
         child1.addChild("B_child");
@@ -285,13 +307,18 @@ class TreeTest {
 
         assertThrows(ConcurrentModificationException.class, () -> {
             for (String curVal : treeS.bfs()) {
-                child2.remove();
+                if (curVal.equals("Root"))
+                    child2.remove();
             }
         });
     }
 
+    /*
+        У DFS корень до самого конца считается находящимся в обходе
+        так что здесь при удалении хоть выше, хоть ниже должно быть исключение.
+     */
     @Test
-    void testDfsConcurrentException() {
+    void testDfsConcurrentExceptionBeforeTraverse() {
         Tree<Integer> child1 = treeI.addChild(1);
         Tree<Integer> child2 = treeI.addChild(2);
         child1.addChild(5);
@@ -301,8 +328,84 @@ class TreeTest {
 
         assertThrows(ConcurrentModificationException.class, () -> {
             for (Integer curVal : treeI.dfs()) {
-                treeI.remove();
+                if (curVal == 1)
+                    child2.remove();
             }
         });
+    }
+
+    @Test
+    void testDfsConcurrentExceptionAfterTraverse() {
+        Tree<Integer> child1 = treeI.addChild(1);
+        Tree<Integer> child2 = treeI.addChild(2);
+        child1.addChild(5);
+        child2.addChild(4);
+        child2.addChild(3);
+
+
+        assertThrows(ConcurrentModificationException.class, () -> {
+            for (Integer curVal : treeI.dfs()) {
+                if (curVal == 5)
+                    treeI.remove();
+            }
+        });
+    }
+
+    /*
+        Когда обход полностью завершился, мы снова должны иметь возможность удалять вершины
+     */
+    @Test
+    void testDfsConcurrentExceptionAfterTraverseEnd() {
+        Tree<Integer> child1 = treeI.addChild(1);
+        Tree<Integer> child2 = treeI.addChild(2);
+        child1.addChild(5);
+        child2.addChild(4);
+        child2.addChild(3);
+
+        ArrayList<Integer> result = new ArrayList<>();
+        for (Integer curVal : treeI.dfs()) {
+            result.add(curVal);
+        }
+        ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 1, 5));
+        assertEquals(expected, result);
+
+        child2.remove();
+        result.clear();
+        for (Integer curVal : treeI.dfs()) {
+            result.add(curVal);
+        }
+        expected = new ArrayList<>(Arrays.asList(1, 1, 5));
+        assertEquals(expected, result);
+    }
+
+    /*
+        Для BFS удалим все листья, чтобы удостовериться в полной разблокировке
+     */
+    @Test
+    void testBfsConcurrentExceptionAfterTraverseEnd() {
+        Tree<String> child1 = treeS.addChild("B");
+        Tree<String> child2 = treeS.addChild("A");
+        Tree<String> forDeletion1 = child1.addChild("B_child");
+        Tree<String> forDeletion2 = child2.addChild("A2");
+        Tree<String> forDeletion3 = child2.addChild("A1");
+
+
+        ArrayList<String> result = new ArrayList<>();
+        for (String curVal : treeS.bfs()) {
+            result.add(curVal);
+        }
+        ArrayList<String> expected =
+                new ArrayList<>(Arrays.asList("Root", "B", "A", "B_child", "A2", "A1"));
+        assertEquals(expected, result);
+
+        forDeletion1.remove();
+        forDeletion2.remove();
+        forDeletion3.remove();
+        result.clear();
+        for (String curVal : treeS.bfs()) {
+            result.add(curVal);
+        }
+        expected = new ArrayList<>(Arrays.asList("Root", "B", "A"));
+        assertEquals(expected, result);
     }
 }
