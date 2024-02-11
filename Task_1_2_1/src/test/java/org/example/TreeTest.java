@@ -307,8 +307,9 @@ class TreeTest {
 
         assertThrows(ConcurrentModificationException.class, () -> {
             for (String curVal : treeS.bfs()) {
-                if (curVal.equals("Root"))
+                if (curVal.equals("Root")) {
                     child2.remove();
+                }
             }
         });
     }
@@ -328,8 +329,9 @@ class TreeTest {
 
         assertThrows(ConcurrentModificationException.class, () -> {
             for (Integer curVal : treeI.dfs()) {
-                if (curVal == 1)
+                if (curVal == 1) {
                     child2.remove();
+                }
             }
         });
     }
@@ -345,8 +347,9 @@ class TreeTest {
 
         assertThrows(ConcurrentModificationException.class, () -> {
             for (Integer curVal : treeI.dfs()) {
-                if (curVal == 5)
+                if (curVal == 5) {
                     treeI.remove();
+                }
             }
         });
     }
