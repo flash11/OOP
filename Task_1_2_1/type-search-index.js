@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.example","l":"BfsIterable"},{"p":"org.example","l":"DfsIterable"},{"p":"org.example","l":"ExcludeFromJacocoGeneratedReport"},{"p":"org.example","l":"Tree"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.example","l":"BfsIterable"},{"p":"org.example","l":"DfsIterable"},{"p":"org.example","l":"Tree"}]
