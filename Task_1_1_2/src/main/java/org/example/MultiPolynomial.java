@@ -213,7 +213,7 @@ public class MultiPolynomial {
             }
             // Если один из мультиполиномов содержит больше полиномов, чем другой,
             // их также необходимо просуммировать, 
-            при этом в этих полиномах может быть только коэффициент
+            // при этом в этих полиномах может быть только коэффициент
             // при нулевой степени переменной
             for (int i = minPolynomialsSize; i < maxPolynomialsSize; i++) {
                 if (maxPolynomials.get(i).getCoefficients().length > 1)
