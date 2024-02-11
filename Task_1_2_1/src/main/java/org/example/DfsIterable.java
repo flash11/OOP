@@ -3,6 +3,7 @@ package org.example;
 import java.util.ArrayDeque;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Provides an iterable interface for depth-first traversal of a Tree.
@@ -14,7 +15,7 @@ public class DfsIterable<T> implements Iterable<T> {
      */
     private class DfsIterator implements Iterator<T> {
 
-        // Stack used to store nodes in depth-first order.
+        // Stack(Deque) used to store nodes in depth-first order.
         public ArrayDeque<Tree<T>> dfsStack;
 
         /**
@@ -23,6 +24,7 @@ public class DfsIterable<T> implements Iterable<T> {
         public DfsIterator() {
             dfsStack = new ArrayDeque<Tree<T>>();
             dfsStack.add(treeNode);
+            treeNode.setTraverseProtection(true);
         }
 
         /**
@@ -34,6 +36,9 @@ public class DfsIterable<T> implements Iterable<T> {
          */
         @Override
         public boolean hasNext() {
+            if (dfsStack.isEmpty()) {
+                treeNode.setTraverseProtection(false);
+            }
             return !dfsStack.isEmpty();
         }
 
@@ -44,11 +49,10 @@ public class DfsIterable<T> implements Iterable<T> {
          */
         @Override
         public T next() {
-            Tree<T> currentNode = dfsStack.pollLast();
-            if (currentNode.getNodeValue() == null) {
-                throw new ConcurrentModificationException();
+            if (!hasNext()) {
+                throw new NoSuchElementException();
             }
-
+            Tree<T> currentNode = dfsStack.pollLast();
             dfsStack.addAll(currentNode.nodeChildren);
             return currentNode.getNodeValue();
         }
@@ -76,4 +80,3 @@ public class DfsIterable<T> implements Iterable<T> {
         return new DfsIterator();
     }
 }
-
