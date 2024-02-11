@@ -1,23 +1,23 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.Collection;
 
-/**
+/*
  * [1,2,3] translate 3x^2 + 2x + 1
  * [1, 2, 0, 3] translate 3x^3 + 2x + 1
  */
 
-// степени это индексы коэффициентов, причем по нулевому индексу следует слагаемое x^0
+// Cтепени это индексы коэффициентов, причем по нулевому индексу следует слагаемое x^0=1
+
+/**
+ * Polynomial class.
+ */
 public class Polynomial {
 
-    public static void main(String[] args) {
-        Polynomial p = new Polynomial(new double[]{1, -2, 3});
-        System.out.println(p);
-    }
     private double[] coefficients;
 
-// два констуктора
+
+    // два констуктора
     public Polynomial() {
         this.coefficients = new double[]{0};
     }
@@ -27,13 +27,47 @@ public class Polynomial {
         this.coefficients = normalize(coefficients);
     }
 
-    // возвращает скопированный массив нужной длины
+    /**
+     * getter.
+     *
+     * @return coeff.
+     */
+    public double[] getCoefficients() {
+        return coefficients;
+    }
+
+
+    /**
+     * copy coefficients(array).
+     *
+     * @return copied version.
+     */
     public double[] copyCoefficients() {
         return Arrays.copyOf(coefficients, coefficients.length);
     }
 
-    // создаем новый сложенный полином
+    /**
+     * Get rid of maximal degree with zero coef.
+     *
+     * @param coefficients polynomial.
+     * @return polynomial without last zeroes.
+     */
+    private static double[] normalize(double[] coefficients) {
+        int maximalDegree = coefficients.length - 1;
 
+        while (maximalDegree > 0 && coefficients[maximalDegree] == 0) {
+            maximalDegree--;
+        }
+        return Arrays.copyOf(coefficients, maximalDegree + 1);
+    }
+
+    /**
+     * Create new polynomial with addition other.
+     * Using copyCoefficients.
+     *
+     * @param anotherPolynomial input.
+     * @return new polynomial.
+     */
     public Polynomial plus(Polynomial anotherPolynomial) {
         Polynomial largerPolynomial = this;
         Polynomial smallerPolynomial = anotherPolynomial;
@@ -50,8 +84,14 @@ public class Polynomial {
     }
 
 
-// подсчет в точке
-    public double evaluate(double arg) {
+    /**
+     * Calculate concrete X.
+     * Multiply x every time self.
+     *
+     * @param arg argument.
+     * @return result double type.
+     */
+    public double calculate(double arg) {
         double result = 0;
         double x = 1; // отражает степени x
         for (int i = 0; i < coefficients.length; i++) {
@@ -62,12 +102,23 @@ public class Polynomial {
     }
 
 
+    /**
+     * Minus method.
+     *
+     * @param anotherPolynomial input.
+     * @return negative polynomial.
+     */
     public Polynomial minus(Polynomial anotherPolynomial) {
 
         return this.plus(anotherPolynomial.multiply(-1));
     }
 
-    // нужно для минуса
+    /**
+     * Minus helper.
+     *
+     * @param scalar usualy -1.
+     * @return multiplied polynomial.
+     */
     public Polynomial multiply(double scalar) {
         double[] newCoefficients = this.copyCoefficients();
         for (int i = 0; i < newCoefficients.length; i++) {
@@ -76,19 +127,13 @@ public class Polynomial {
         return new Polynomial(newCoefficients);
     }
 
-    // дает максимальную степень, избавляемся от старших нулей
-    private static double[] normalize(double[] coefficients) {
-        int maximalDegree = coefficients.length - 1;
 
-        while (maximalDegree > 0 && coefficients[maximalDegree] == 0) {
-            maximalDegree --;
-        }
-        return Arrays.copyOf(coefficients, maximalDegree + 1);
-    }
-
-
-    // сравнение двух полиномов
-
+    /**
+     * Comparing two polynomials.
+     *
+     * @param obj Object.
+     * @return equals or not.
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -100,41 +145,62 @@ public class Polynomial {
         return false;
     }
 
-    // РАСПЕЧАТЫВАНИЕ ПОЛИНОМА
+
+    /**
+     * method for one variable.
+     *
+     * @return full string.
+     */
     @Override
     public String toString() {
+        return getStringWithSpecialLetter("x");
+    }
+
+
+    /**
+     * formatting string of coefficients.
+     *
+     * @param varName any but x in this case.
+     * @return polynomial.
+     */
+    public String getStringWithSpecialLetter(String varName) {
         StringBuilder stringBuilder = new StringBuilder();
-
         int last = coefficients.length - 1;
-
-        stringBuilder.append(getMemberRepresentation(coefficients[last], last));
-
+        stringBuilder.append(getMemberRepresentation(varName, coefficients[last], last));
         last--;
-
         for (; last >= 0; last--) {
             if (coefficients[last] == 0) {
                 continue;
             }
             stringBuilder.append(" + ");
-            stringBuilder.append(getMemberRepresentation(coefficients[last], last));
+            stringBuilder.append(getMemberRepresentation(varName, coefficients[last], last));
         }
         return stringBuilder.toString();
     }
 
-    private static String getMemberRepresentation(double coef, int powerDegree) {
+    /**
+     * each unit.
+     *
+     * @param varName x or any.
+     * @param coef in array.
+     * @param powerDegree index of array.
+     * @return unit of polynomial.
+     */
+    private static String getMemberRepresentation(String varName, double coef, int powerDegree) {
         if (powerDegree == 0) {
             return Double.toString(coef);
         }
         String coefPart = Double.toString(coef);
         String powerDegreePart = String.format("^%s", powerDegree);
-        if (coef == 1.) {
+        if (coef == 1) {
             coefPart = "";
         }
 
         if (powerDegree == 1) {
             powerDegreePart = "";
         }
-        return String.format("%sx%s", coefPart, powerDegreePart);
+        return String.format("%s%s%s", coefPart, varName, powerDegreePart);
+
     }
 
 }
