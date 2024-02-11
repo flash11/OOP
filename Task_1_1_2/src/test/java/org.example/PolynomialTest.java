@@ -19,7 +19,7 @@ public class PolynomialTest {
         Assertions.assertEquals("x + 2.0", polynomial.toString());
 
         MultiPolynomial multPol = new MultiPolynomial(new double[][]{{3, 2, 1}, {5, 6}});
-        Assertions.assertEquals("1v0^2 + 2v0 + 3 + 6v1 + 5", multPol.toString());
+        Assertions.assertEquals("v0^2 + 2.0v0 + 3.0 + 6.0v1 + 5.0", multPol.toString());
     }
 
     /**
@@ -40,7 +40,7 @@ public class PolynomialTest {
         MultiPolynomial multPol2 = new MultiPolynomial(new double[][]{{3, 2, 1, 2}, {5, 3}, {3, 4}});
 
         MultiPolynomial miltiPlusBoth = new MultiPolynomial(new double[][] {{6, 4, 2, 2}, {10, 9}, {3, 4}});
-        MultiPolynomial multiMinusBoth = new MultiPolynomial(new double[][] {{0, 0, 0, 2}, {0, 3}, {3, 4}});
+        MultiPolynomial multiMinusBoth = new MultiPolynomial(new double[][] {{0, 0, 0, -2}, {0, 3}, {-3, -4}});
 
         Assertions.assertEquals(miltiPlusBoth, multPol1.plus(multPol2));
         Assertions.assertEquals(multiMinusBoth, multPol1.minus(multPol2));
@@ -73,8 +73,8 @@ public class PolynomialTest {
         Polynomial polynomial3 = new Polynomial(new double[]{2, 1, 4});
         Polynomial polynomial4 = new Polynomial(new double[]{2, 1, 4});
 
-        Assertions.assertTrue(polynomial1.equals(polynomial2));
-        Assertions.assertFalse(polynomial3.equals(polynomial4));
+        Assertions.assertFalse(polynomial1.equals(polynomial2));
+        Assertions.assertTrue(polynomial3.equals(polynomial4));
 
         MultiPolynomial multPol1 = new MultiPolynomial(new double[][]{{3, 2, 1}, {5, 6}});
         MultiPolynomial multPol2 = new MultiPolynomial(new double[][]{{3, 2, 1, 2}, {5, 3}, {3, 4}});
