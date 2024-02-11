@@ -6,6 +6,7 @@ package org.example;
 public class HeapSort {
     /**
      * Sorting specify arr.
+     
      * @param arr array for sorting.
      */
     static public void sort(int arr[]) {
