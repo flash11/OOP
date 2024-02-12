@@ -55,13 +55,19 @@ public class StudentBookTest {
         semester2.add("Biology", 3);
         Semester semester3 = new Semester();
         semester3.addFutureSubject("Music");
-        
+
         studentBook1.addSemester(semester1);
         studentBook1.addSemester(semester2);
         studentBook1.addSemester(semester3);
 
-        assertTrue(4, studentBook1.countSubjects());
+        Semester sems = new ArrayList();
+
+        sems.addSemester(semester1);
+        sems.addSemester(semester2);
+        sems.addSemester(semester3);
         
+        assertTrue(4, studentBook1.countSubjects(sems));
+
     }
     
     @Test
