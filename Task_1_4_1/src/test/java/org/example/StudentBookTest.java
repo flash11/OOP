@@ -60,13 +60,9 @@ public class StudentBookTest {
         studentBook1.addSemester(semester2);
         studentBook1.addSemester(semester3);
 
-        Semester sems = new ArrayList();
+       
 
-        sems.addSemester(semester1);
-        sems.addSemester(semester2);
-        sems.addSemester(semester3);
-        
-        assertTrue(4, studentBook1.countSubjects(sems));
+        assertEquals(4, studentBook1.countSubjectHelper());
 
     }
     
