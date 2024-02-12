@@ -45,6 +45,26 @@ public class StudentBookTest {
     }
 
     @Test
+    public void countSubjectsTest() {
+        StudentBook studentBook1 = new StudentBook("Vlad");
+        Semester semester1 = new Semester();
+        semester1.add("OOP", 5);
+        semester1.add("Physics", 4);
+        Semester semester2 = new Semester();
+        semester2.add("OOP", 5);
+        semester2.add("Biology", 3);
+        Semester semester3 = new Semester();
+        semester3.addFutureSubject("Music");
+        
+        studentBook1.addSemester(semester1);
+        studentBook1.addSemester(semester2);
+        studentBook1.addSemester(semester3);
+
+        assertTrue(4, studentBook1.countSubjects());
+        
+    }
+    
+    @Test
     public void isRedDiplomaTest() {
 
         StudentBook studentBook1 = new StudentBook("Vlad");
