@@ -140,6 +140,13 @@ public class StudentBook {
         return countFutureSubs - min5;
     }
 
+    public int countSubjectHelper() {
+        ArrayList<Semester> tmpSemesters = new ArrayList<>(semesters);
+        Collections.reverse(tmpSemesters);
+        int countSubjects = countSubjects(tmpSemesters);
+        return countSubjects;
+    }
+
     private int countFives(ArrayList<Semester> semestersReverse) {
         return  (int) semestersReverse.stream()
                 .flatMap(semester -> semester.getListSubjectsOfSemester().stream())
