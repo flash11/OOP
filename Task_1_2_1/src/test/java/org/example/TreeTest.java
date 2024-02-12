@@ -258,8 +258,8 @@ class TreeTest {
         child2.addChild("A2");
         child2.addChild("A1");
 
-        Iterable<String> bfs = treeS.dfs();
-        Iterator<String> itr = bfs.iterator();
+        Iterable<String> dfs = treeS.dfs();
+        Iterator<String> itr = dfs.iterator();
 
         ArrayList<String> expected =
                 new ArrayList<>(Arrays.asList("Root", "A", "A1", "A2", "B", "B_child"));
