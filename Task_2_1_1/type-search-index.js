@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.example","l":"ParallelDetector"},{"p":"org.example","l":"PrimeNumbersDetector"},{"p":"org.example","l":"PrimeNumbersDetectorUtils"},{"p":"org.example","l":"SequentialDetector"},{"p":"org.example","l":"TaskDelimiter"},{"p":"org.example","l":"ThreadedDetector"}];updateSearchResults();
