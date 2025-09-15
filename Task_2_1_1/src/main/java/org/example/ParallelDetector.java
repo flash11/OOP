@@ -17,7 +17,8 @@ public class ParallelDetector implements PrimeNumbersDetector {
     @Override
     public boolean isNotPrimeNumbers(Integer[] numbers) {
         List<Integer> numList = Arrays.asList(numbers);
-        return numList.stream().anyMatch(num -> !PrimeNumbersDetectorUtils.isPrimeNumber(num));
-
+        return !numList.parallelStream().noneMatch(
+                num -> !PrimeNumbersDetectorUtils.isPrimeNumber(num)
+        );
     }
 }
